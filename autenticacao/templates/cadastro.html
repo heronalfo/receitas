@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+
+
+{% block 'head' %}
+
+
+  {% load static %}
+  
+  <title>Cadastro</title>
+
+  <link href="{% static 'css/cadastro.css' %}" rel="stylesheet">
+  
+  <style>
+    
+    {% if status == '1' or status == '2' %}
+    
+      #email{
+      
+        border-color: #e74c3c;
+      
+      }
+                    
+    {% endif%}
+    
+    
+  </style>
+  
+{% endblock %}
+
+{% block 'body' %}
+
+  <div class="centro">
+  
+    <div class="formulario">
+    
+      <form method="POST" action="{% url 'cadastro' %}">
+      
+        {%csrf_token%}               
+        
+        <h1> Cadastro </h1>
+        
+
+                                                   
+        <hr>
+        
+        <h4>email: </h4>
+        
+        {{ form.email }}
+                
+        {% if status == '1' %}
+        
+          <h5> ( ! ) email já cadastrado</h5>
+        
+        {% endif%}
+        
+        {% if status == '2'%}
+        
+          <h5>( ! ) as senhas devem ser as mesmas</h5>
+        
+        {% endif%}                
+                                                        
+        
+        <hr>
+        
+        <h4>senha: </h4>
+        
+        <input type="password" name="senha" id="senha" minlength="8" required>
+        
+        
+ 
+        <h4>repetir senha: </h4>  
+             
+        <input type="password" name="senha2" id="senha2" required>
+        
+        <hr>
+        
+        <a href='/auth/login/'>
+        
+          Já tem uma conta? Faça o login
+          
+        </a>
+        
+        <br><br>
+        
+        <button id="botao-cadastro"> Cadastrar </button>
+        
+      </form>
+      
+    </div>
+    
+  </div>
+  
+{% endblock %}

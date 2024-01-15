@@ -1,0 +1,135 @@
+/* Adicione este CSS ao seu arquivo de estilo (por exemplo, style.css) */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.centro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5; /* Cor de fundo geral */
+}
+
+.formulario {
+    background-color: #EBEBEB;
+    border-radius: 12px;
+    width: 100%;
+    padding: 40px; /* Reduzi o padding para ficar mais equilibrado */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+}
+
+form {
+    text-align: center;
+}
+
+h1 {
+    color: #333; /* Cor do texto principal */
+}
+
+
+h4 {
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    opacity: 0.4;
+    color: #333; /* Cor do texto principal */
+
+}
+
+h5{
+
+    color: #e74c3c;
+    font-size: 12px;
+    opacity: 0.5;
+
+}
+
+hr {
+    border: 1px solid #ddd; /* Cor da linha separadora */
+    margin: 20px 0;
+}
+
+a{
+
+  font-family: Arial, sans-serif; 
+  text-decoration: none;
+  color: #27ae60; 
+
+
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    border: 1px solid #ddd; /* Cor da borda do input padrÃ£o */
+    border-radius: 8px;
+    opacity: 0.7;
+    transition: border-color 0.3s ease; /* Adiciona uma transiÃ§Ã£o suave na cor da borda */
+}
+
+
+input:focus {
+    border-color: #27ae60; /* Cor da borda quando o input estÃ¡ focado */
+}
+
+
+
+#id_email {
+    /* Estilo especÃ­fico para o input com ID 'email' */
+    border-color: #27ae60;  /* Cor da borda para o input com ID 'email' */
+    font-weight: bold; /* Fonte em negrito para o input com ID 'email' */
+    opacity: 0.7;
+}
+
+button {
+    background-color: #27ae60; /* Nova cor para o botÃ£o, um verde suave */
+    color: #fff; /* Cor do texto do botÃ£o */
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Adiciona uma transiÃ§Ã£o suave no tamanho do botÃ£o */
+}
+
+button:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do botÃ£o ao passar o mouse sobre ele */
+}
+
+/* Adicione media query para ajustar estilos para telas menores (mobile) */
+@media screen and (max-width: 768px) {
+    .formulario {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h4, h5 {
+    
+        text-align: left; /* Alinha os tÃ­tulos Ã  esquerda para telas menores */
+    }
+    
+    
+    
+
+    /* Adicione estilos especÃ­ficos para Ã­cones nas entradas */
+    #id_email{
+    
+        background-image: url('email.png'); /* Substitua pelo caminho da sua imagem */
+        background-repeat: no-repeat;
+        
+        background-position: 10px center;
+        background-size: 20px;
+        padding-left: 40px; /* EspaÃ§amento para nÃ£o sobrepor o Ã­cone */
+    }
+
+    input[type="password"] {
+        background-image: url('senha.png'); /* Substitua pelo caminho da sua imagem */
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 20px;
+        padding-left: 40px; /* EspaÃ§amento para nÃ£o sobrepor o Ã­cone */
+    }
+}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block 'head' %}
+
+
+  {% load static %}
+  
+  <title>Validação</title>
+
+  <link href="{% static 'css/validacao.css' %}" rel="stylesheet">
+  
+  <style>
+  
+    {% if status == '1'%}
+  
+      #token{
+      
+        border-color: #e74c3c;
+      
+      }
+  
+    {% endif %}
+  
+    {% if status == '2'%}
+    
+    
+      #token{
+      
+        border-color: #e74c3c;
+      
+      }
+    
+    {% endif %}
+            
+  </style>
+  
+{% endblock %}
+
+{% block 'body' %}
+
+  <div class="centro">
+  
+    <div class="formulario">
+    
+      <form method="POST" action="{% url 'validacao' %}">
+      
+        {%csrf_token%}
+        
+        <h1> Verificação </h1>        
+                                                  
+        <hr>
+        
+        <h4> codigo de confirmação enviado para '{{emai}}' o token se expirará em 30 minutos {{token}}</h4>
+        
+        <br><br>
+        
+        <input type='number' name='token', id='token' placeholder='999-999-999' minlength="8" maxlength="8" required>
+        
+        {% if status == '2'%}
+        
+          <h5>( ! ) Codigo informado está incorreto </h5>
+          <br><br>
+        
+        {% endif %}
+  
+
+                              
+        <a href="{% url 'reenviar_codigo' %}">
+        
+          Email não enviado? Enviar
+          
+        </a>
+        
+        <br><br>
+        
+        <button id="botao-cadastro"> Cadastrar </button>
+        
+      </form>
+      
+    </div>
+    
+  </div>
+  
+{% endblock %}
