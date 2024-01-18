@@ -95,7 +95,7 @@ def validacao(request):
             else:
             
                 login(request, user)
-                return redirect('/noticias/')
+                return redirect('/receitas/')
                 
 def reenviar(request):
  

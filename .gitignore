@@ -6,3 +6,10 @@ db.sqlite3
 media
 
 #arquivos de backup
+
+*.bak
+
+#chaves SSH
+
+*.pub
+OPENSSH
