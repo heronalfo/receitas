@@ -1,0 +1,20 @@
+{% extends 'extensions/extension.html' %}
+
+{% block 'head' %}
+  <title>Receps</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+  <!-- HEADER -->
+  {% include '../extensions/header.html' %}
+  
+  <!-- SEARCH-BOX -->
+  {% include '../extensions/search_box.html' %}
+  
+  <!-- RECIPE-LIST-ITEM -->  
+  {% for recipe in Receps %}
+    {% include '../extensions/receps_list.html' %}
+  {% endfor %}
+{% endblock %}
