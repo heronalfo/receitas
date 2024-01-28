@@ -3,6 +3,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: var(--color-gray-1);
 }
 
 .main-container {
@@ -10,11 +11,11 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f5f5f5; /* Cor de fundo geral */
+    background-color: var(--color-gray-2) /* Cor de fundo geral */
 }
 
 .main-form {
-    background-color: #EBEBEB;
+    background-color: var(--color-gray-2);
     border-radius: 12px;
     width: 100%;
     padding: 40px; /* Reduzi o padding para ficar mais equilibrado */

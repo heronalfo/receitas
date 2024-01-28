@@ -1,23 +1,40 @@
 from django.shortcuts import render
-from .models import Receps
+from django.urls import reverse
+from .models import Receps, Categories
 
 def receps(request):
 
-    receps_list = Receps.objects.all()
+    receps_list = Receps.objects.all().filter(is_published=True).order_by('-id')
     
     return render(request, 'pages/receps.html', {'Receps': receps_list})
 
-def recipe(request, id):
+def recipe(request, slug):
 
-    receps_list = Receps.objects.all().filter(id=id)[0]
+    try:
+
+        receps_list = Receps.objects.all().filter(slug=slug)[0]
     
-    print(receps_list)
+    except:
     
+        receps_list = {
+        
+            'title': 'Recipe not found', 
+            'description': 'Name of recipe incorrect',
+            'time': '0',
+            'date': '00/00/00',
+            'portions': 0,
+            'slug': 'recipe-not-found-404'
+            
+        }
+     
+            
     return render(request, 'pages/recipe.html', {'recipe': receps_list})
 
-def category(request, id):
+def category(request, name):
 
-    receps_list = Receps.objects.all().filter(category=id)
+    id_of_recipe = Categories.objects.all().filter(name=name)[0].id
+    
+    receps_list = Receps.objects.all().filter(category=id_of_recipe, is_published=True).order_by('-id')
     
     return render(request, 'pages/receps.html', {'Receps': receps_list})
 

@@ -1,0 +1,21 @@
+from django.urls import reverse, resolve
+from ..models import Categories
+from .tests_receps_base import TestsRecepsBase
+
+class RecepsURLsTest(TestsRecepsBase):    
+    
+    def test_receps_home_is_correct(self):
+        
+        url = reverse('receps:receps')
+        self.assertEqual(url, '/receps/')
+    
+    def test_receps_category_is_correct(self):
+                
+        url = reverse('receps:category', kwargs={'name': 'BreakFast'})        
+        self.assertEqual(url, f'/receps/category/BreakFast/')
+   
+    def test_receps_recipe_is_correct(self):
+        
+        url = reverse('receps:receps-recipe', kwargs={'slug': 'test-recipe'})        
+        
+        self.assertEqual(url, '/receps/recipe/test-recipe/')

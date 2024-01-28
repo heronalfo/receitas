@@ -32,7 +32,7 @@
   
     <div class="main-form">
     
-      <form method="POST" action="{% url 'login' %}">
+      <form method="POST" action="{% url 'auth:login' %}">
     
         {%csrf_token%}
       
@@ -58,7 +58,7 @@
         
         <hr>
         
-        <a href="{% url 'register' %}">
+        <a href="{% url 'auth:register' %}">
         
           Don't have an account? Sign up 
           

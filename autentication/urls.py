@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 
+app_name = "auth" 
+
 urlpatterns = [
 
     path('register/', views.register, name="register"), 
@@ -8,6 +10,6 @@ urlpatterns = [
     
     path('validation/', views.validation, name='validation'),
     
-    path('resend/', views.resend, name='resend')
+    path('resend/', views.resend, name='resend'),
     
 ]

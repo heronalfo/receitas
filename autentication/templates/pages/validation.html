@@ -42,7 +42,7 @@
   
     <div class="main-form">
     
-      <form method="POST" action="{% url 'validation' %}">
+      <form method="POST" action="{% url 'auth:validation' %}">
       
         {%csrf_token%}
         
@@ -66,7 +66,7 @@
   
 
                               
-        <a href="{% url 'resend' %}">
+        <a href="{% url 'auth:resend' %}">
         
           Email not sent? Resend
           

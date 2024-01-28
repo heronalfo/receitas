@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login as django_login
 from django.contrib.auth.models import User
+from django.urls import reverse
 from datetime import timedelta
 from random import randrange
 from . import forms
@@ -26,7 +27,7 @@ def register(request):
         
         print(email, password)
         
-        return redirect('/auth/validation/')
+        return redirect(reverse('auth:validation'))
 
 
 def login(request): 
@@ -44,7 +45,7 @@ def login(request):
 
         if not user:
             django_login(request, user)
-            return redirect('/receps/')
+            return redirect(reverse('receps:receps'))
         else:        
             
             return render(request, 'pages/login.html', {'form': forms.UsersForm(), 'status': '1'})
@@ -59,7 +60,7 @@ def validation(request):
         print(email, password)
 
         if not email or not password:
-            return redirect('/auth/register/')
+            return redirect(reverse('auth:register'))
 
         token = request.session.get('token_validation_email', {}).get('token')
 
@@ -101,7 +102,7 @@ def validation(request):
             else:
             
                 django_login(request, user)
-                return redirect('/receps/')
+                return redirect(reverse('receps:receps'))
                 
 def resend(request):
  
@@ -109,10 +110,14 @@ def resend(request):
     
         token = request.session.get('token_validation_email', {}).get('token')
         
+        if not token:
+        
+            return redirect(reverse('auth:register'))
+        
         novo_token = randrange(100_000_000, 999_999_999)
         
         time_expiration = (timezone.now() + timedelta(seconds=60*30)).strftime('%Y-%m-%dT%H:%M:%S')
         
         request.session['token_validation_email'] = {'token': str(novo_token), 'time': time_expiration}
         
-        return redirect('/auth/validation/')
+        return redirect(reverse('auth:validation/'))
