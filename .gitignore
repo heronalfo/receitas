@@ -5,6 +5,10 @@ __pycache__/
 
 .env
 
+.coverage
+
+.coveragerc
+
 # Distribution / packaging
 .Python
 env/
