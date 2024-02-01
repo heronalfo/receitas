@@ -1,8 +1,9 @@
 <div class="main-search-container">
 
-  <form action="" class="main-search-form">
-
-    <input type="text" class="search-box">
+  <form method="POST" action="{% url 'receps:search' %}" class="main-search-form">
+    
+    {% csrf_token %}
+    <input type="text" class="search-box" name="search">
   
     <button class="search-button" type="submit">
     

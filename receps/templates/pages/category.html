@@ -1,29 +1,22 @@
-{% extends 'extensions/extension.html'%}
+{% extends 'extensions/extension.html' %}
 
-{% block 'head'%}
-
-  <title>Receps</title>
-  
+{% block 'head' %}
+  <title>Categories</title>
   {% load static %}
-  
-  <link rel="stylesheet" href="{% static 'css/receps.css'%}">
-
+  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
 {% endblock %}
 
 {% block 'body' %}
-
   <!-- HEADER -->
-  {% include '../extensions/header.html' %}
+  {% include '../extensions/header_category.html' %}
+  
+  <!-- SEARCH-BOX -->
+  {% include '../extensions/search_box.html' %}
   
   <!-- RECIPE-LIST-ITEM -->  
-  
-  {% for recipe in Recipes %}
-  
-  {% include '../extensions/recipe_list.html' %}
-  
+  {% for recipe in Receps %}
+    {% include '../extensions/receps_list.html' %}
   {% endfor %}
   
-  
-
-
+  {% include '../extensions/pagination.html' %}
 {% endblock %}

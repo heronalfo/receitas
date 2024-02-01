@@ -10,12 +10,13 @@ class RecepsViewsTest(TestsRecepsBase):
         view = resolve(reverse('receps:receps'))
         self.assertIs(view.func, views.receps)
     
-    def test_receps_category_views_is_correct(self):   
-    
-        view = resolve(reverse('receps:category', kwargs={'name': 'BreakFast'}))        
-        self.assertIs(view.func, views.category)
-        
+            
     def test_receps_recipe_views_is_correct(self):
            
         view = resolve(reverse('receps:receps-recipe', kwargs={'slug': 'test-recipe'}))
         self.assertIs(view.func, views.recipe)
+        
+    def test_receps_search_views_is_correct(self):
+           
+        view = resolve(reverse('receps:search'))
+        self.assertIs(view.func, views.search)

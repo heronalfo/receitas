@@ -5,31 +5,12 @@ from django.utils.text import slugify
 class Categories(models.Model):
 
     name = models.CharField(null=True, blank=True, max_length=38, unique=True)
-
-class Receps(models.Model):
-
-    title = models.CharField(max_length=92)
     
-    date = models.DateTimeField(auto_now_add=True)
+    icon = models.CharField(default="fas fa-utensils",null=True, blank=True, max_length=100)
     
-    category = models.ForeignKey(Categories, on_delete=models.DO_NOTHING)
-    
-    portions = models.IntegerField()
-    
-    user = models.ForeignKey(User, models.DO_NOTHING)
-    
-    description = models.TextField()
-    
-    time = models.CharField(max_length=192)
-    
-    slug = models.SlugField(blank=True, null=False, unique=True)
-    
-    update = models.DateTimeField(auto_now=True)
-    
-    is_published = models.BooleanField(default=True)
-    
-    from django.utils.text import slugify
-
+    def __str__(self):
+        return self.name
+     
 class Receps(models.Model):
     
     title = models.CharField(max_length=92)
@@ -64,5 +45,8 @@ class Receps(models.Model):
                 self.slug = f"{slugify(self.title)}-{count}"
             
         super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.title
             
             

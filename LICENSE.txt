@@ -1,0 +1,1 @@
+This project is make for apprenticeship. This is from one website for recipes, all rights  reserved to Otávio Miranda, my teacher. Of course, this project was developed per me. I used your design pattern only.

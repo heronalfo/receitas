@@ -1,12 +1,9 @@
-*.pub
-
-OPENSSH
 
 __pycache__/
 
 *.py[cod]
 
-.untlided
+.env
 
 # Distribution / packaging
 .Python

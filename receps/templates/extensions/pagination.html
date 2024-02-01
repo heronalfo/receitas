@@ -1,0 +1,23 @@
+{% if Receps.has_other_pages %}
+    <div class="pagination">    
+        <div class="pagination-content">
+        
+          {% if pages.first_page_out_of_range %}
+            <a class="page-link page-item" href="?page=1">
+              <span>1</span>
+            
+            </a>
+          {% endif %}
+          
+          {% for page in pages.pagination%}
+        
+              <a class="page-link page-item" href="?page={{ page }}&search={{ add }}">
+                {{page}}            
+              </a>
+              
+          {%endfor%}
+              
+        </div>
+            
+    </div>
+{% endif %}
