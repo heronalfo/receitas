@@ -15,7 +15,7 @@
             
             <!-- AUTHOR -->
             <div class="recipe-author">
-                <span class="author-item">
+                <a href="{% url 'authors:profile' username=recipe.user.username %}" class="author-item">
                     <i class="fas fa-user"></i>
                     {{recipe.user.username}}
                 </span>

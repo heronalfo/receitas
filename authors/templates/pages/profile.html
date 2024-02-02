@@ -1,0 +1,71 @@
+{% extends '../partials/extension.html' %}
+
+{% block 'head' %}
+
+  <title>Receps</title>
+  
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  
+{% endblock %}
+
+{% block 'body' %}
+
+  <div class="main-profile">
+  
+      <div class="main-header-profile">
+      
+        <a href="{% url 'receps:receps' %}" class="header-profile-title">  Receps</a>
+        
+        {% if not user.is_authenticated %}
+        
+        <a href="{% url 'receps:receps' %}" class="header-profile-enter"> Enter</a>
+        
+        <a href="{% url 'receps:receps' %}" class="header-profile-register"> Sing Up </a>
+        
+        {% endif %}
+        
+        <hr>
+        
+        
+      </div>
+    
+      <div class="profile">
+        
+        <div class="cover-profile"></div>        
+        <span class="author-user">{{ user.username }}</span>
+        
+        {% if author.is_professional %}
+        <i class="fas fa-check"></i>
+        {% endif %}
+                        
+      </div>
+      
+      <div class="author-info">
+      
+        <h4>{{ author.name }}</h4>
+        <h6>{{ author.bio }}</h6>
+        
+        <a href="{{ author.link }}">
+        
+          <i class="fas fa-link"></i>
+          <span class="text-link">{{ author.link }}</span>
+          
+        </a>
+      </div>
+      
+      <div class="profile-recipe">
+      
+        <hr>
+        
+        
+        <span class="text-recipe">{{ total_revenue }}</span>
+        
+        <span class="text-recipe">Recipes</span>
+        
+        <hr>
+        
+      </div>
+                                 
+  </div>
+{% endblock %}

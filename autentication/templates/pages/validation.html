@@ -1,4 +1,4 @@
-{% extends '../extensions/extension.html' %}
+{% extends '../partials/extension.html' %}
 
 {% block 'head' %}
 
@@ -11,7 +11,7 @@
   
   <style>
   
-    {% if status == '1'%}
+    {% if messages %}
   
       #token{
       
@@ -19,17 +19,6 @@
       
       }
   
-    {% endif %}
-  
-    {% if status == '2'%}
-    
-    
-      #token{
-      
-        border-color: #e74c3c;
-      
-      }
-    
     {% endif %}
             
   </style>
@@ -56,11 +45,12 @@
         
         <input type='number' name='token', id='token' placeholder='999-999-999' minlength="8" maxlength="8" required>
         
-        {% if status == '2'%}
+        {% if messages %}
         
-          <h5>( ! ) Code informed is incorrect </h5>
+          {% for message in messages%}
+          <h5>( ! ) {{ message }}</h5>
           
-          <br><br>
+          {% endfor %}
         
         {% endif %}
   
@@ -71,9 +61,7 @@
           Email not sent? Resend
           
         </a>
-        
-        <br><br>
-        
+                        
         <button id="button-register">Register</button>
         
       </form>

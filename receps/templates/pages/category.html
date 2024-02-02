@@ -1,4 +1,4 @@
-{% extends 'extensions/extension.html' %}
+{% extends 'partials/extension.html' %}
 
 {% block 'head' %}
   <title>Categories</title>
@@ -8,15 +8,15 @@
 
 {% block 'body' %}
   <!-- HEADER -->
-  {% include '../extensions/header_category.html' %}
+  {% include '../partials/header_category.html' %}
   
   <!-- SEARCH-BOX -->
-  {% include '../extensions/search_box.html' %}
+  {% include '../partials/search_box.html' %}
   
   <!-- RECIPE-LIST-ITEM -->  
   {% for recipe in Receps %}
-    {% include '../extensions/receps_list.html' %}
+    {% include '../partials/receps_list.html' %}
   {% endfor %}
   
-  {% include '../extensions/pagination.html' %}
+  {% include '../partials/pagination.html' %}
 {% endblock %}

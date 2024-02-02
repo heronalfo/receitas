@@ -8,15 +8,15 @@
 
 {% block 'body' %}
   <!-- HEADER -->
-  {% include '../extensions/header.html' %}
+  {% include '../partials/header.html' %}
   
   <!-- SEARCH-BOX -->
-  {% include '../extensions/search_box.html' %}
+  {% include '../partials/search_box.html' %}
   
   <!-- RECIPE-LIST-ITEM -->  
   {% for recipe in Receps %}
-    {% include '../extensions/receps_list.html' %}
+    {% include '../partials/receps_list.html' %}
   {% endfor %}
   
-  {% include '../extensions/pagination.html' %}
+  {% include '../partials/pagination.html' %}
 {% endblock %}

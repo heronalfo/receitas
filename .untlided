@@ -1,13 +1,12 @@
-"Fixed: Fixed the problem with urls, the urls were modified in tests;
+"add: '.env' variable enviroment, get the '.env-exemple' for own use;
 
-Fixed: Removede the duplication from Receps (table:Receps);
+add: Created new app 'authors' for authors from receps and system for profille;
 
-Add: Added new tests for templates in Receps: 'tests_receps_templates.py';
+fixed: Solved the problems in loggin and sing up system;
 
-Add: Added new tests for templates in Autentication: 'tests_auth_templates.py';
+update: atualized the style from system authentication;
 
-Add: created new extension for pagination from templates in (utils:receps:dir);
- 
-Update: Models (Receps:Category) encremented one new column 'icon' for icons font ''awesome'';
+update: Renomed the dirs from 'extensions' for 'partials';
 
-Update: Now, in header show to name from category and to icon ''awesome'' font;"
+
+"

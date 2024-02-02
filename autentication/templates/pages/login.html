@@ -1,4 +1,4 @@
-{% extends '../extensions/extension.html' %}
+{% extends '../partials/extension.html' %}
 
 {% block 'head' %}
 
@@ -12,7 +12,7 @@
   
   <style>
   
-    {% if status == '1' or status == '2' %}
+    {% if messages %}
     
       #email{
       
@@ -44,11 +44,14 @@
         
         {{ form.email }}
         
-        {% if status == '1' %}
+        {% if messages %}
         
-          <h5> ( ! ) Email or password incorrect  </h5>
+          {% for message in messages%}
+          <h5>( ! ) {{ message }}</h5>
+                    
+          {% endfor %}
         
-        {% endif%}
+        {% endif %}
         
         <hr>
         
@@ -64,13 +67,9 @@
           
         </a>
         
-        <br><br>
         
         <button id="button-register">Cadastrar </button>
-    
-      
-      
-      
+                      
       </forms>
       
       

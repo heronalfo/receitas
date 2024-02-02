@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils import timezone
 from django.contrib.auth import authenticate, login as django_login
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import timedelta
@@ -16,18 +17,24 @@ def register(request):
     elif request.method == "POST":
         email = request.POST.get('email')
         password = request.POST.get('password')
-        password_repeat= request.POST.get('password-repeat')
+        password_repeat = request.POST.get('password-repeat')
 
         if email in User.objects.values_list('email', flat=True):
-            return render(request, 'pages/register.html', {'form': forms.UsersForm(), 'status': '1'})
+            messages.error(request, 'This email is already registered')
         if password != password_repeat:
-            return render(request, 'pages/register.html', {'form': forms.UsersForm(), 'status': '2'})
+            messages.error(request, 'email and password must be equal')
+        
+        if messages.get_messages(request):
+            form = forms.UsersForm(request.POST)
+            return render(request, 'pages/register.html', {'form': form})
 
-        request.session['user_cookie'] = {'email': email, 'password': password}
+        # Aqui você continua com o processamento se não houver mensagens de erro
         
-        print(email, password)
-        
-        return redirect(reverse('auth:validation'))
+        user_cookie = {'email': email, 'password': password}
+                        
+        request.session['user_cookie'] = user_cookie
+                        
+        return redirect(reverse('auth:validation'))  # Redirecionar após o registro
 
 
 def login(request): 
@@ -35,11 +42,10 @@ def login(request):
     if request.method == 'GET':
         return render(request, 'pages/login.html', {'form': forms.UsersForm()})
     elif request.method == 'POST':
+    
         email = request.POST.get('email')
         password = request.POST.get('password')
-
-        if not email or not password:
-            return HttpResponse('E-mail e password sÃ£o obrigatÃ³rios.')
+        
 
         user = authenticate(request, email=email, password=password)
 
@@ -48,7 +54,7 @@ def login(request):
             return redirect(reverse('receps:receps'))
         else:        
             
-            return render(request, 'pages/login.html', {'form': forms.UsersForm(), 'status': '1'})
+            messages.error(request, 'email or password are incorrect')
 
 
 def validation(request):
@@ -87,7 +93,7 @@ def validation(request):
             return render(request, 'pages/register.html')
 
         elif entrada_token != token:
-            return render(request, 'pages/validation.html', {'email': email, 'status': '2'})
+            messages.error(request, 'The token insert are incorrect')
         else:
         
             User.objects.create_user(username=email, password=password)

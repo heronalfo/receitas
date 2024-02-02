@@ -1,4 +1,4 @@
-{% extends '../extensions/extension.html'%}
+{% extends '../partials/extension.html'%}
 
 {% block 'head' %}
 
@@ -11,7 +11,7 @@
   
   <style>
     
-    {% if status == '1' or status == '2' %}
+    {% if messages %}
     
       #email{
       
@@ -43,41 +43,35 @@
         <h4>email: </h4>
         
         {{ form.email }}
-                
-        {% if status == '1' %}
+         
+                       
+        {% if messages %}
         
-          <h5> ( ! ) email is register</h5>
+          {% for message in messages%}
+          <h5>( ! ) {{ message }}</h5>
+         
+          {% endfor %}
         
-        {% endif%}
+        {% endif %}
         
-        {% if status == '2'%}
-        
-          <h5>( ! ) Passwords must be the same </h5>
-        
-        {% endif%}                
-                                                    
-        <hr>
-        
+                                     
         <h4>password: </h4>
         
         <input type="password" name="password" id="password" minlength="8" required>
         
-        
- 
+         
         <h4>repeat password: </h4>  
              
         <input type="password" name="password-repeat" id="password-repeat" required>
         
-        <hr>
+        
         
         <a href="{% url 'auth:login' %}">
         
           Have an account? Log in 
           
         </a>
-        
-        <br><br>
-        
+                        
         <button id="button-register"> Cadastrar </button>
         
       </form>

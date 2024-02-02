@@ -3,11 +3,15 @@ __pycache__/
 
 *.py[cod]
 
+*.bak
+
 .env
 
-.coverage
+# Tests Coverage
 
-.coveragerc
+htmlcov/
+
+.coverage
 
 # Distribution / packaging
 .Python
@@ -53,6 +57,6 @@ coverage.xml
 manage.py
 .DS_Store
 
-# example database
+#database
 
 sqlite3.db

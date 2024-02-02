@@ -1,0 +1,105 @@
+body{
+
+  background-color: var(--color-gray-1);
+
+}
+
+*{
+
+  margin: 0;
+  padding: 0;
+
+}
+
+hr{
+
+  color: var(--color-primary-dark);
+  border-width: 2px;
+  
+
+}
+
+a{
+
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+
+
+.header-profile-title{
+  font-family: var(--font-heading);
+  font-size: 25px;
+  color: var(--color-primary-dark);
+  margin-right: auto; /* Move o título para a esquerda */
+}
+
+.header-profile-enter,
+.header-profile-register {
+  background: var(--color-primary-dark);
+  border-radius: 3px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.header-profile-enter {
+  margin-right: 5px; /* Adiciona espaço entre os botões */
+}
+
+.header-profile-register {
+  margin-left: auto; /* Move o botão "register" para a extrema direita */
+}
+.profile{
+
+  display: flex;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+
+.author-user{
+
+  padding: 0 20px;
+  font-size: 27px;
+
+}
+
+.cover-profile {
+    padding-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.profile-recipe{
+
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-primary-dark);
+  color: white;
+
+
+}
+
+.author-info{
+
+  padding:0 10px;
+
+}
+
+.text-recipe{
+
+  font-family: var(--font-heading);
+
+}
+
+.text-link{
+  
+  font-weight: bold;
+
+}
