@@ -27,4 +27,8 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
+<<<<<<< HEAD
         python manage.py test
+=======
+        python manage.py test
+>>>>>>> refs/remotes/origin/main
