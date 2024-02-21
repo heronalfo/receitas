@@ -60,46 +60,10 @@ h1, h2, h3, h4, h5, h6{
 
   background: var(--color-primary-dark);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+ 
 
 }
 
-
-.main-search-container{
-
-  padding-top: 20px;
-  display: flex;
-  flex-flow: nowrap;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.main-search-form{
-
-  position: relative;
-  max-width: 640px;
-  border: 2px solid var(--color-black);
-  border-radius: 4px;
-
-}
-
-.search-button, 
-.search-box {
-
-  outline: none;
-  background: none;
-  border: none;
-
-}
-
-.search-button:hover{
-
-  outline: 1px solid var(--color-primary);
-  background: rgba(0, 0, 0, .4);
-
-
-}
 
 .main-content-container {
   background: none;
@@ -132,7 +96,7 @@ h1, h2, h3, h4, h5, h6{
 
 .recipe-list-item{
 
-  max-width: 640px;
+  max-width: 640px; 
 
 }
 

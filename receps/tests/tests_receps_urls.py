@@ -11,8 +11,8 @@ class RecepsURLsTest(TestsRecepsBase):
     
     def test_receps_category_url_is_correct(self):
                 
-        url = reverse('receps:category', kwargs={'id': 1})        
-        self.assertEqual(url, f'/receps/category/1/')
+        url = reverse('receps:category', kwargs={'name': 'Teste'})        
+        self.assertEqual(url, f'/receps/category/Teste/')
    
     def test_receps_recipe_url_is_correct(self):
         

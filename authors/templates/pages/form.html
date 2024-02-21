@@ -1,0 +1,22 @@
+{% extends '../partials/extension.html' %}
+
+{% block 'head' %}
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  
+  
+  
+  
+{% endblock %}
+
+{% block 'body' %}
+  {% include 'partials/header_min.html' %}
+  
+  {% for recipe in Receps %}
+    {% include 'partials/recepe_edit.html' %}
+  {% endfor %}
+  
+{% endblock %}

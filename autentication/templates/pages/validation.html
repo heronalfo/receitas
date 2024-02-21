@@ -1,4 +1,4 @@
-{% extends '../partials/extension.html' %}
+{% extends 'extension.html' %}
 
 {% block 'head' %}
 
@@ -43,7 +43,7 @@
         
         <br><br>
         
-        <input type='number' name='token', id='token' placeholder='999-999-999' minlength="8" maxlength="8" required>
+        <input type='number' name='token', id='token' placeholder='999-999-999' minlength=8 maxlength=8 required>
         
         {% if messages %}
         

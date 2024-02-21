@@ -7,33 +7,21 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/profile.css' %}">
   
+  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
+  
 {% endblock %}
 
 {% block 'body' %}
 
   <div class="main-profile">
   
-      <div class="main-header-profile">
-      
-        <a href="{% url 'receps:receps' %}" class="header-profile-title">  Receps</a>
-        
-        {% if not user.is_authenticated %}
-        
-        <a href="{% url 'receps:receps' %}" class="header-profile-enter"> Enter</a>
-        
-        <a href="{% url 'receps:receps' %}" class="header-profile-register"> Sing Up </a>
-        
-        {% endif %}
-        
-        <hr>
-        
-        
+      {% include 'partials/header_min.html'%}              
       </div>
     
       <div class="profile">
         
         <div class="cover-profile"></div>        
-        <span class="author-user">{{ user.username }}</span>
+        <span class="author-user">{{ user_infos.username }}</span>
         
         {% if author.is_professional %}
         <i class="fas fa-check"></i>
@@ -44,7 +32,7 @@
       <div class="author-info">
       
         <h4>{{ author.name }}</h4>
-        <h6>{{ author.bio }}</h6>
+        <h4>{{ author.bio }}</h4>
         
         <a href="{{ author.link }}">
         
@@ -66,6 +54,10 @@
         <hr>
         
       </div>
+      
+      {% for recipe in Receps %}
+        {% include 'partials/receps_list.html' %}
+      {% endfor %}
                                  
   </div>
 {% endblock %}

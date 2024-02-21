@@ -1,0 +1,32 @@
+.main-crud{
+
+
+  background-color: var(--color-gray-2);
+
+}
+
+
+.crud-content a{
+    margin-right: 20px;
+}
+
+.crud-edit-button,
+.crud-trash-button {
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.crud-edit-button {
+  background-color: green;
+  margin-right: 10px; /* Ajuste o espaçamento entre os botões */
+}
+
+.crud-trash-button {
+  background-color: red;
+}

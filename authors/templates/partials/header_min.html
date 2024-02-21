@@ -1,0 +1,13 @@
+<div class="main-header-profile">      
+  <a href="{% url 'receps:receps' %}" class="header-profile-title">  Receps</a>
+          
+  {% if not user.is_authenticated %}
+        
+  <a href="{% url 'receps:receps' %}" class="header-profile-enter"> Enter</a>
+  <a href="{% url 'receps:receps' %}" class="header-profile-register"> Sing Up </a>
+        
+  {% endif %}
+        
+  <hr>
+        
+</div>

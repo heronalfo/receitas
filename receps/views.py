@@ -8,7 +8,7 @@ from .utils import pagination
 import os
 import pdb
 
-PERPAGE = int(os.environ.get('PERPAGE', 42))
+PERPAGE = int(os.environ.get('PERPAGE', 1))
 
 def receps(request):
 
@@ -41,10 +41,11 @@ def recipe(request, slug):
             
     return render(request, 'pages/recipe.html', {'recipe': receps_list})
 
-def category(request, id):
+def category(request, name):
     
+    category = Categories.objects.all().filter(name=name).first()
             
-    receps_list = Receps.objects.all().filter(category=id, is_published=True).order_by('-id')
+    receps_list = Receps.objects.all().filter(category=category.id, is_published=True).order_by('-id')
      
     category = receps_list.first().category
     

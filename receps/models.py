@@ -13,19 +13,19 @@ class Categories(models.Model):
      
 class Receps(models.Model):
     
-    title = models.CharField(max_length=92)
+    title = models.CharField(max_length=42)
 
     date = models.DateTimeField(auto_now_add=True)
     
     category = models.ForeignKey(Categories, on_delete=models.DO_NOTHING)
     
-    portions = models.IntegerField()
+    portions = models.PositiveIntegerField(null=False, blank=False)
     
     user = models.ForeignKey(User, models.DO_NOTHING)
     
-    description = models.TextField()
+    description = models.TextField(blank=False)
     
-    time = models.CharField(max_length=192)
+    time = models.CharField(max_length=8)
     
     slug = models.SlugField(blank=True, null=False, unique=True)
     

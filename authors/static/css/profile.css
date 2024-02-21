@@ -11,7 +11,7 @@ body{
 
 }
 
-hr{
+.main-profile hr{
 
   color: var(--color-primary-dark);
   border-width: 2px;
@@ -19,7 +19,7 @@ hr{
 
 }
 
-a{
+.main-profile a{
 
   color: var(--color-primary-dark);
   text-decoration: none;

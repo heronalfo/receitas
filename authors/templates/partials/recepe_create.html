@@ -1,8 +1,9 @@
 <div class="main-container">
     <div class="main-content main-content-list container">
   
-        <div class="recipe recipe-list-item">
+        <form class="recipe recipe-list-item" method="POST" action="{% url 'authors:create'%}">
         
+            {% csrf_token %}        
             <!-- IMAGE -->
             <div class="recipe-cover">
                 <img src="https://via.placeholder.com/1280x720.png/000">
@@ -10,31 +11,35 @@
             
             <!-- TITLE -->
             <div class="recipe-title-container">
-                <h2>{{recipe.title}}</h2>
+                <h2>{{form.title}}</h2>
             </div>
             
             <!-- AUTHOR -->
             <div class="recipe-author">
-                <a href="{% url 'authors:profile' username=recipe.user.username %}" class="author-item">
+                <span class="author-item">
                     <i class="fas fa-user"></i>
-                    {{recipe.user.username}}
+                    {% if receps_user is not None%}
+                    
+                      {{receps_user}}
+                      
+                    {% else %}
+                    
+                      Unknow
+                      
+                    {% endif%}
                 </span>
                 
                 <span class="author-item">
                     <i class="fas fa-calendar-alt"></i>
-                    {{recipe.date}}
+                    {{date}}
                 </span>
                 
-                <a class="author-item" href="{% url 'receps:category' name=recipe.category.name %}">
+                <span class="author-item">
                     <i class="fas fa-layer-group"></i>
-                    {{recipe.category.name}}
-                </a>
+                    {{form.category}}
+                </span>
             </div>
-            
-            <div class="recipe-content">
-                <p>{{ recipe.description|slice:":40" }}{% if recipe.description|length > 40 %}...{% endif %}</p>
-            </div>
-            
+                                    
             <!-- METADATA AND USER INFO -->
             <div class="recipe-meta-container">
                 <!-- TIME OF PREPARATION -->
@@ -42,7 +47,7 @@
                     <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i>Preparo</h3>
                     
                     <div class="recipe-meta-text">
-                        {{recipe.time}}
+                        {{form.time}}
                     </div>
                 </div>
                 
@@ -56,31 +61,37 @@
                     
                     <div class="recipe-meta-text">
                     
-                    {% if recipe.portions < 2%}
+                   
                     
-                    {{recipe.portions}} Portion
+                    {{form.portions}}
                     
-                    {% endif %}
+                   
                     
-                    {% if recipe.portions > 2%}
-                    
-                    {{recipe.portions}} Portions
-                    
-                    {% endif %}
                     
                     
                     </div>
                 </div>
             </div>
             
-            <footer class="recipe-footer">
-                <a class="recipe-read-more button button-dark button-full-width" href="{% url 'receps:receps-recipe' slug=recipe.slug %}">
-                    <i class="fas fa-eye"></i>
-                    <span>Read more</span>
-                </a>
-            </footer>
+            <div class="recipe-title-container">
+            
+                <h3>
+                  <i class="fas fa-blender"></i> 
+                  Details of recipe
+                </h3>
+                
+                <h5>{{form.description}}</h5>
+            </div>
+            
+            <div class="recipe-footer">
+            
+                <button class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:create' %}">
+                    <i class="fas fa-utensils"></i>
+                    <span>Create</span>
+                </button>
+            </div>
                             
-        </div>
+        </form>
       
     </div>
 </div>

@@ -1,0 +1,56 @@
+{% extends '../partials/extension.html' %}
+
+{% block 'head' %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  
+  <link href="{% static 'css/receps.css' %}">
+  
+{% endblock %}
+
+{% block 'body' %}
+  {% include 'partials/header_min.html' %}
+  
+  <div class="main-form-container">
+    <div class="main-form">
+      <form method="POST" class="form-content">
+        {% csrf_token %}
+        
+          <div class="image-upload-container">
+          
+            <label for="image-upload" class="image-upload-label">
+            
+              <i class="fas fa-camera"></i>   
+            <input id="image-upload" type="file" accept="image/*" class="image-upload-input">
+    
+            </div>
+        <div class="input-group">
+          {{ form.title }}
+        </div>
+        
+        <div class="input-group">
+          {{ form.description }}
+        </div>
+        <div class="input-group">
+          {{ form.category }}
+        </div>
+        <div class="input-group">
+          {{ form.portions }}
+        </div>
+        <div class="input-group">
+          {{ form.is_published }}
+        </div>
+        <div class="input-group">
+          {{ form.time }}
+        </div>
+        <button class="submit-button">Enviar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
