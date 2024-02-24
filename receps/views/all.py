@@ -2,28 +2,18 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db.models import Q
 from django.core.paginator import Paginator
-from django.http import QueryDict
-from .models import Receps, Categories
-from .utils import pagination
+from django.views.generic import ListView
+from ..models import Receps, Categories
+from ..utils import pagination
 import os
 import pdb
-
-PERPAGE = int(os.environ.get('PERPAGE', 1))
-
-def receps(request):
-
-    receps_list = Receps.objects.all().filter(is_published=True).order_by('-id')
-    
-    page_obj, pages = pagination.make_pagination(request, receps_list, PERPAGE, 1)
-    
-       
-    return render(request, 'pages/receps.html', {'Receps': page_obj, 'pages': pages})
-
+   
+               
 def recipe(request, slug):
 
     try:
 
-        receps_list = Receps.objects.all().filter(slug=slug)[0]
+        receps_list = Receps.objects.all().filter(slug=slug).first()
     
     except:
     

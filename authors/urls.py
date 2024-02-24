@@ -5,15 +5,15 @@ app_name = "authors"
 
 urlpatterns = [
 
-    path('profile/<str:username>/', views.profile, name='profile'),
+    path('profile/<str:username>/', views.AuthorsProfile.as_view(), name='profile'),
     
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('dashboard/', views.AuthorsDashboard.as_view(), name='dashboard'),
     
-    path('dashboard/create/', views.create, name='create'),
+    path('dashboard/create/', views.AuthorsCreate.as_view(), name='create'),
     
-    path('dashboard/<int:id>/edit/', views.edit, name='edit'),
+    path('dashboard/<int:id>/edit/', views.RecepsEdit.as_view(), name='edit'),
     
-    path('dashboard/<int:id>/delete/', views.delete, name='delete'),
+    path('dashboard/<int:id>/delete/', views.AuthorsRecepeDelete.as_view(), name='delete'),
     
     
 

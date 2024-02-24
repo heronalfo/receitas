@@ -8,7 +8,7 @@ from django.views import View
 from django.urls import reverse
 from datetime import timedelta
 from random import randrange
-from .forms import UsersForm
+from .. import forms
 
 
 class AuthRegister(View):
@@ -16,7 +16,7 @@ class AuthRegister(View):
     
     def get(self, *args):
         
-        form = UsersForm()
+        form = forms.UsersForm()
         return render(self.request, 'pages/register.html', {'form': form})
         
         
@@ -35,7 +35,7 @@ class AuthRegister(View):
             messages.error(self.request, 'email and password must be equal')
         
         if messages.get_messages(self.request):
-            form = UsersForm(self.request.POST)
+            form = forms.UsersForm(self.request.POST)
             
             return render(self.request, 'pages/register.html', {'form': form})
         
@@ -50,7 +50,7 @@ class AuthLogin(View):
     
     def get(self, *args):
         
-        form = UsersForm()
+        form = forms.UsersForm()
     
         return render(self.request, 'pages/login.html', {'form': form})
         

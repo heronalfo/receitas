@@ -5,12 +5,12 @@ app_name = "auth"
 
 urlpatterns = [
 
-    path('register/', views.register, name="register"),
+    path('register/', views.AuthRegister.as_view(), name="register"),
      
-    path('login/', views.login, name="login"),
+    path('login/', views.AuthLogin.as_view(), name="login"),
     
-    path('validation/', views.validation, name='validation'),
+    path('validation/', views.AuthValidation.as_view(), name='validation'),
     
-    path('resend/', views.resend, name='resend'),
+    path('resend/', views.AuthResend.as_view(), name='resend'),
     
 ]
