@@ -1,4 +1,4 @@
-{% extends '../partials/extension.html' %}
+{% extends 'extension.html' %}
 
 {% block 'head' %}
 
@@ -15,8 +15,8 @@
 {% block 'body' %}
   {% include 'partials/header_min.html' %}
   
-  {% for recipe in Receps %}
-   {% include 'partials/recepe_edit.html' %}
+  {% for recipe in recipes %}
+   {% include 'partials/recipe_edit.html' %}
   {% endfor %}
   
 {% endblock %}

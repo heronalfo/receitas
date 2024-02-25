@@ -1,21 +1,24 @@
 {% extends 'extension.html' %}
 
 {% block 'head' %}
+
   <title>Receps</title>
+  
   {% load static %}
+  
   <link rel="stylesheet" href="{% static 'css/receps.css' %}">
 {% endblock %}
 
 {% block 'body' %}
-  <!-- HEADER -->
+
   {% include '../partials/header.html' %}
   
-  <!-- SEARCH-BOX -->
   {% include '../partials/search_box.html' %}
+   
+  {% for recipe in recipes %}
   
-  <!-- RECIPE-LIST-ITEM -->  
-  {% for recipe in Receps %}
-    {% include '../partials/receps_list.html' %}
+    {% include '../partials/recipes.html' %}
+    
   {% endfor %}
   
   {% include '../partials/pagination.html' %}

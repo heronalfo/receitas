@@ -9,126 +9,119 @@ from django.urls import reverse
 from datetime import datetime
 from ..models import Authors
 from ..forms import FormsAuthors
-from receps.models import Receps, Categories
-from receps.views import RecepsListView
+from receps.models import Recipes, Categories
+from receps.views import RecipesListView
 import pdb
 
 @method_decorator(login_required(login_url='auth:login'), name='dispatch')
-class AuthorsDashboard(RecepsListView):
-    
+class AuthorsDashboard(RecipesListView):
+    """
+    View for the author's dashboard.
+    """
     template_name = 'pages/dashboard.html'
     ordering = ["-id"]
     
     def get_queryset(self, *args, **kwargs):
+        """
+        Return the queryset of unpublished recipes by the current user.
+
+        Returns:
+            queryset: Queryset object containing the unpublished recipes by the current user.
+        """
         qs = super().get_queryset(*args, **kwargs)
-        
-        qs = qs.filter(is_published=False, user_id = self.request.user)
-        
+        qs = qs.filter(is_published=False, user_id=self.request.user)
         return qs
     
 
 @method_decorator(login_required(login_url='auth:login'), name='dispatch')
-
 class AuthorsCreate(View):
-
+    """
+    View for creating a new recipe by the author.
+    """
     def get(self, request):
-    
+        """
+        Handle GET requests for creating a new recipe.
+        """
         form = FormsAuthors()
         now = datetime.now()
-        
         return render(
-        
             request,
             'pages/form_create.html',
-            
-                {
-                
-                'form': form,                 
-                'date': now.date,                 
-                'receps_user': request.user
-                }
-                
+            {
+                'form': form,
+                'date': now.date,
+                'recipes_user': request.user
+            }
         )
     
-    
     def post(self, request):
-    
+        """
+        Handle POST requests for creating a new recipe.
+        """
         form = FormsAuthors()
-                        
         title = request.POST.get('title')
-        user=request.user,
+        user = request.user
         category = int(request.POST.get('category'))
         portions = int(request.POST.get('portions'))
-        description = request.POST.get('description')        
-        is_published = request.POST.get('is_published')   
+        description = request.POST.get('description')
+        is_published = request.POST.get('is_published')
         time = request.POST.get('time')
-                            
+        
         category_instance = Categories.objects.get(id=category)
 
-        Receps(
-    
+        Recipes(
             title=title,
             user=request.user,
             category=category_instance,
             portions=portions,
             description=description,
             is_published=True if is_published == 'on' else False,
-            time=time    
-                
+            time=time
         ).save()
         
         return redirect(reverse('authors:dashboard'))
 
 @method_decorator(login_required(login_url='auth:login'), name='dispatch')
-
-class RecepsEdit(View):
-    
-                       
+class AuthorsRecipeEdit(View):
+    """
+    View for editing an existing recipe by the author.
+    """
     def get(self, request, id):
-       
-       self.receps = Receps.objects.filter(id=id)
-       
-       self.form = FormsAuthors(
-        
-        request.POST or None,
-        instance = self.receps.first()
-        
+        """
+        Handle GET requests for editing an existing recipe.
+        """
+        self.recipe = Recipes.objects.filter(id=id)
+        self.form = FormsAuthors(
+            request.POST or None,
+            instance=self.recipe.first()
         )
-       
-       return render(request, 'pages/form.html', {'form': self.form, 'Receps': self.receps})
+        return render(request, 'pages/form.html', {'form': self.form, 'recipes': self.recipe})
    
     def post(self, request, id):
-        
+        """
+        Handle POST requests for editing an existing recipe.
+        """
         category = int(request.POST.get('category'))
+        recipe = Recipes.objects.get(id=id)
         
-        receps = Receps.objects.get(id=id)
-                                     
-        
-        receps.title = request.POST.get('title')
-                
+        recipe.title = request.POST.get('title')
         category_instance = Categories.objects.get(id=category)
-        
-        receps.category = category_instance
-        
-        receps.portions = request.POST.get('portions')
-        
-        receps.description = request.POST.get('description')
-        
-        receps.time = request.POST.get('time')
-        
-        receps.save()
+        recipe.category = category_instance
+        recipe.portions = request.POST.get('portions')
+        recipe.description = request.POST.get('description')
+        recipe.time = request.POST.get('time')
+        recipe.save()
         
         return redirect(reverse('authors:dashboard'))
 
-class AuthorsRecepeDelete(View):
-
+class AuthorsRecipeDelete(View):
+    """
+    View for deleting an existing recipe by the author.
+    """
     def post(self, *args, **kwargs):
-    
-        recipe = Receps.objects.all().filter(id=self.kwargs["id"]).first()
-        
+        """
+        Handle POST requests for deleting an existing recipe.
+        """
+        recipe = Recipes.objects.all().filter(id=self.kwargs["id"]).first()
         recipe.delete()
-        
         return redirect(reverse('authors:dashboard'))
-    
-    
-        

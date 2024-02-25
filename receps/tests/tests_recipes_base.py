@@ -2,7 +2,7 @@ from django.test import TestCase
 from .. import models
 
 
-class TestsRecepsBase(TestCase):
+class TestsRecipesBase(TestCase):
     
     def setUp(self):
         # Cria uma categoria
@@ -14,7 +14,7 @@ class TestsRecepsBase(TestCase):
         return models.Categories.objects.create(name=category_name)
 
     def make_recipe(self, category, title="Recipe test"):
-        return models.Receps.objects.create(
+        return models.Recipes.objects.create(
             title=title,
             category=category,
             portions=1,

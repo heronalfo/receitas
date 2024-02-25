@@ -1,11 +1,11 @@
 from django import forms
-from receps.models import Receps
+from receps.models import Recipes
 
 class FormsAuthors(forms.ModelForm):
 
     class Meta:
     
-        model = Receps
+        model = Recipes
         fields = ['title', 'category', 'portions', 'description', 'is_published', 'time']
     
     def __init__(self, *args, **kwargs):

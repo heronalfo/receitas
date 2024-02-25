@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="main-content main-content-list container">
   
-        <form class="recipe recipe-list-item" method="POST" action="{% url 'authors:edit' id=recipe.id %}">
+        <form class="recipe recipe-list-item" method="POST" action="{% url 'authors:create'%}">
         
             {% csrf_token %}        
             <!-- IMAGE -->
@@ -18,9 +18,9 @@
             <div class="recipe-author">
                 <span class="author-item">
                     <i class="fas fa-user"></i>
-                    {% if recipe.user is not None%}
+                    {% if recipes_user is not None%}
                     
-                      {{recipe.user.username}}
+                      {{recipes_user}}
                       
                     {% else %}
                     
@@ -31,7 +31,7 @@
                 
                 <span class="author-item">
                     <i class="fas fa-calendar-alt"></i>
-                    {{recipe.date}}
+                    {{date}}
                 </span>
                 
                 <span class="author-item">
@@ -61,17 +61,12 @@
                     
                     <div class="recipe-meta-text">
                     
-                    {% if recipe.portions < 2%}
+                   
                     
                     {{form.portions}}
                     
-                    {% endif %}
+                   
                     
-                    {% if recipe.portions > 2%}
-                    
-                    {{form.portions}}
-                    
-                    {% endif %}
                     
                     
                     </div>
@@ -90,9 +85,9 @@
             
             <div class="recipe-footer">
             
-                <button class="recipe-read-more button button-dark button-full-width" href="{% url 'receps:receps' %}">
-                    <i class="fas fa-edit"></i>
-                    <span>Edit</span>
+                <button class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:create' %}">
+                    <i class="fas fa-utensils"></i>
+                    <span>Create</span>
                 </button>
             </div>
                             

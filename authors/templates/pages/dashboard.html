@@ -1,4 +1,4 @@
-{% extends '../partials/extension.html' %}
+{% extends 'extension.html' %}
 
 {% block 'head' %}
 
@@ -13,7 +13,7 @@
 
   {% include '../partials/header_min.html'%}
   
-  {% for recepe in Receps %}
+  {% for recipe in recipes %}
   
     
     <div class="main-crud">
@@ -22,15 +22,15 @@
       
       <div class="crud-content">
       
-        <span>{{recepe}}</span>
+        <span>{{recipe}}</span>
         
-        <a class="crud-edit-button" href="{% url 'authors:edit' id=recepe.id %}">
+        <a class="crud-edit-button" href="{% url 'authors:edit' id=recipe.id %}">
         
           <i class="fas fa-edit"></i>
           
         </a>
         
-        <form class="inline-form" method="POST" action="{%url 'authors:delete' id=recepe.id %}">
+        <form class="inline-form" method="POST" action="{%url 'authors:delete' id=recipe.id %}">
         
           {% csrf_token %}
         

@@ -1,9 +1,8 @@
 <div class="main-container">
     <div class="main-content main-content-list container">
   
-        <form class="recipe recipe-list-item" method="POST" action="{% url 'authors:create'%}">
+        <div class="recipe recipe-list-item">
         
-            {% csrf_token %}        
             <!-- IMAGE -->
             <div class="recipe-cover">
                 <img src="https://via.placeholder.com/1280x720.png/000">
@@ -11,16 +10,16 @@
             
             <!-- TITLE -->
             <div class="recipe-title-container">
-                <h2>{{form.title}}</h2>
+                <h2>{{recipe.title}}</h2>
             </div>
             
             <!-- AUTHOR -->
             <div class="recipe-author">
                 <span class="author-item">
                     <i class="fas fa-user"></i>
-                    {% if receps_user is not None%}
+                    {% if recipe.user is not None%}
                     
-                      {{receps_user}}
+                      {{recipe.user.username}}
                       
                     {% else %}
                     
@@ -31,12 +30,12 @@
                 
                 <span class="author-item">
                     <i class="fas fa-calendar-alt"></i>
-                    {{date}}
+                    {{recipe.date}}
                 </span>
                 
                 <span class="author-item">
                     <i class="fas fa-layer-group"></i>
-                    {{form.category}}
+                    {{recipe.category.name}}
                 </span>
             </div>
                                     
@@ -47,7 +46,7 @@
                     <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i>Preparo</h3>
                     
                     <div class="recipe-meta-text">
-                        {{form.time}}
+                        {{recipe.time}}
                     </div>
                 </div>
                 
@@ -61,12 +60,17 @@
                     
                     <div class="recipe-meta-text">
                     
-                   
+                    {% if recipe.portions < 2%}
                     
-                    {{form.portions}}
+                    {{recipe.portions}} Portion
                     
-                   
+                    {% endif %}
                     
+                    {% if recipe.portions > 2%}
+                    
+                    {{recipe.portions}} Portions
+                    
+                    {% endif %}
                     
                     
                     </div>
@@ -80,18 +84,17 @@
                   Details of recipe
                 </h3>
                 
-                <h5>{{form.description}}</h5>
+                <h5>{{recipe.description}}</h5>
             </div>
             
-            <div class="recipe-footer">
-            
-                <button class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:create' %}">
-                    <i class="fas fa-utensils"></i>
-                    <span>Create</span>
-                </button>
-            </div>
+            <footer class="recipe-footer">
+                <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipes' %}">
+                    <i class="fas fa-eye"></i>
+                    <span>Read more recipes</span>
+                </a>
+            </footer>
                             
-        </form>
+        </div>
       
     </div>
 </div>

@@ -1,5 +1,5 @@
 from django.db import models
-from receps.models import Receps, User
+from receps.models import User
 
 class Authors(models.Model):
 

@@ -11,7 +11,7 @@ class Categories(models.Model):
     def __str__(self):
         return self.name
      
-class Receps(models.Model):
+class Recipes(models.Model):
     
     title = models.CharField(max_length=42)
 
@@ -40,7 +40,7 @@ class Receps(models.Model):
             count = 0
             
             # Verificar se o slug já existe e incrementar um número se necessário
-            while Receps.objects.filter(slug=self.slug).exists():
+            while Recipes.objects.filter(slug=self.slug).exists():
                 count += 1
                 self.slug = f"{slugify(self.title)}-{count}"
             
