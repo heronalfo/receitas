@@ -7,6 +7,8 @@ urlpatterns = [
 
     path('profile/<str:username>/', views.AuthorsProfile.as_view(), name='profile'),
     
+    path('profile/edit/author/', views.AuthorsProfileEdit.as_view(), name='profile-edit'),
+    
     path('dashboard/', views.AuthorsDashboard.as_view(), name='dashboard'),
     
     path('dashboard/create/', views.AuthorsCreate.as_view(), name='create'),

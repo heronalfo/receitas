@@ -5,7 +5,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/form.css' %}">
   
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_min.css' %}">
   
   
   
@@ -13,10 +13,12 @@
 {% endblock %}
 
 {% block 'body' %}
-  {% include 'partials/header_min.html' %}
+  {% include 'global/partials/header_min.html' %}
   
   {% for recipe in recipes %}
-   {% include 'partials/recipe_edit.html' %}
+  
+   {% include '../partials/recipe_edit.html' %}
+   
   {% endfor %}
   
 {% endblock %}

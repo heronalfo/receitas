@@ -1,22 +1,31 @@
 {% extends 'extension.html' %}
 
 {% block 'head' %}
+
   <title>Categories</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/search_box.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+  
 {% endblock %}
 
 {% block 'body' %}
-  <!-- HEADER -->
-  {% include '../partials/header_category.html' %}
+ 
+  {% include 'global/partials/header_category.html' %}
   
-  <!-- SEARCH-BOX -->
-  {% include '../partials/search_box.html' %}
-  
-  <!-- RECIPE-LIST-ITEM -->  
+  {% include 'global/partials/search_box.html' %}
+   
   {% for recipe in recipes %}
-    {% include '../partials/recipes.html' %}
+  
+    {% include 'global/partials/recipes.html' %}
+    
   {% endfor %}
   
-  {% include '../partials/pagination.html' %}
+  {% include 'global/partials/pagination.html' %}
 {% endblock %}

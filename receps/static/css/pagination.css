@@ -1,0 +1,34 @@
+.pagination {
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+
+.pagination-content {
+  display: flex;
+  align-items: center;
+  
+}
+
+.page-item {
+  margin: 0 10px;
+  
+}
+
+.page-link {
+  background-color: #13141f;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
+  
+}
+
+.page-link:hover {
+  background-color: white;
+  color: #13141f;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  
+}

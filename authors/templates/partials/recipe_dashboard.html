@@ -74,9 +74,9 @@
             </div>
             
             <footer class="recipe-footer">
-                <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipes-recipe' slug=recipe.slug %}">
-                    <i class="fas fa-eye"></i>
-                    <span>Read more</span>
+                <a class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:edit' id=recipe.id %}">
+                    <i class="fas fa-edit"></i>
+                    <span>To edit</span>
                 </a>
             </footer>
                             

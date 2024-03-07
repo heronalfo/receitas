@@ -1,3 +1,4 @@
+#pylint:disable=E0602
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -13,21 +14,23 @@ class Categories(models.Model):
      
 class Recipes(models.Model):
     
+    cover = models.ImageField(upload_to='images/', default='', null=True, blank=True)
+    
     title = models.CharField(max_length=42)
 
     date = models.DateTimeField(auto_now_add=True)
     
     category = models.ForeignKey(Categories, on_delete=models.DO_NOTHING)
     
-    portions = models.PositiveIntegerField(null=False, blank=False)
+    portions = models.PositiveIntegerField()
     
     user = models.ForeignKey(User, models.DO_NOTHING)
     
-    description = models.TextField(blank=False)
+    description = models.TextField()
     
     time = models.CharField(max_length=8)
     
-    slug = models.SlugField(blank=True, null=False, unique=True)
+    slug = models.SlugField(unique=True)
     
     update = models.DateTimeField(auto_now=True)
     
@@ -35,11 +38,10 @@ class Recipes(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            # Gerar o slug com base no título
+            
             self.slug = slugify(self.title)
             count = 0
-            
-            # Verificar se o slug já existe e incrementar um número se necessário
+                        
             while Recipes.objects.filter(slug=self.slug).exists():
                 count += 1
                 self.slug = f"{slugify(self.title)}-{count}"

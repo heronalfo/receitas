@@ -11,46 +11,6 @@ body{
 
 }
 
-.main-profile hr{
-
-  color: var(--color-primary-dark);
-  border-width: 2px;
-  
-
-}
-
-.main-profile a{
-
-  color: var(--color-primary-dark);
-  text-decoration: none;
-}
-
-
-
-.header-profile-title{
-  font-family: var(--font-heading);
-  font-size: 25px;
-  color: var(--color-primary-dark);
-  margin-right: auto; /* Move o título para a esquerda */
-}
-
-.header-profile-enter,
-.header-profile-register {
-  background: var(--color-primary-dark);
-  border-radius: 3px;
-  color: white;
-  padding: 5px 10px;
-  font-size: 14px;
-  text-align: left;
-}
-
-.header-profile-enter {
-  margin-right: 5px; /* Adiciona espaço entre os botões */
-}
-
-.header-profile-register {
-  margin-left: auto; /* Move o botão "register" para a extrema direita */
-}
 .profile{
 
   display: flex;
@@ -101,5 +61,25 @@ body{
 .text-link{
   
   font-weight: bold;
+
+}
+
+.author-action-bar{
+
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+}
+
+.button-action-bar{
+
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-primary-dark);
+  height: 30px;
+  color: white;
+  width: 40%;
+  font-size: 70%;
 
 }

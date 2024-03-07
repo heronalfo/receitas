@@ -7,7 +7,9 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/profile.css' %}">
   
-  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_min.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
   
 {% endblock %}
 
@@ -15,7 +17,7 @@
 
   <div class="main-profile">
   
-      {% include 'partials/header_min.html'%}              
+      {% include 'global/partials/header_min.html'%}              
       </div>
     
       <div class="profile">
@@ -31,16 +33,50 @@
       
       <div class="author-info">
       
-        <h4>{{ author.name }}</h4>
-        <h4>{{ author.bio }}</h4>
+        {% if author.name %}
         
-        <a href="{{ author.link }}">
-        
-          <i class="fas fa-link"></i>
-          <span class="text-link">{{ author.link }}</span>
+          <h4>{{ author.name }}</h4>
           
-        </a>
+        {% endif %}
+        
+        {% if author.bio %}
+        
+          <h4>{{ author.bio }}</h4>
+          
+        {% endif %}
+        
+        {% if author.link %}
+        
+          <a href="{{ author.link }}">
+            
+            <i class="fas fa-link"></i>
+              <span class="text-link">{{ author.link }}</span>
+              
+          </a>
+            
+        {% endif %}
       </div>
+      
+      
+      {% if user.id == author.id %}
+      <br>
+      <div class="author-action-bar">
+      
+        <a class="button-action-bar" href="{% url 'authors:profile-edit' %}">
+        
+          Edit profile
+        </a>
+        
+        
+        <button class="button-action-bar">
+        
+          Share profile 
+        </button>
+        
+      </div>
+      <br>
+      {% endif %}
+      
       
       <div class="profile-recipe">
       
@@ -55,8 +91,8 @@
         
       </div>
       
-      {% for recipe in Receps %}
-        {% include 'partials/receps_list.html' %}
+      {% for recipe in recipes %}
+        {% include 'global/partials/recipes.html' %}
       {% endfor %}
                                  
   </div>

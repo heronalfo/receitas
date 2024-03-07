@@ -6,20 +6,35 @@
   
   {% load static %}
   
-  <link rel="stylesheet" href="{% static 'css/receps.css' %}">
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/search_box.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  
+  
+  
+  
+  
 {% endblock %}
 
 {% block 'body' %}
 
-  {% include '../partials/header.html' %}
+  <!-- {% include 'global/partials/menu.html' %} -->
   
-  {% include '../partials/search_box.html' %}
+  {% include 'global/partials/header.html' %}
+  
+  {% include 'global/partials/search_box.html' %}
    
   {% for recipe in recipes %}
   
-    {% include '../partials/recipes.html' %}
+    {% include 'global/partials/recipes.html' %}
     
   {% endfor %}
   
-  {% include '../partials/pagination.html' %}
+  {% include 'global/partials/pagination.html' %}
 {% endblock %}

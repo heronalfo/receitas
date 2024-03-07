@@ -6,20 +6,21 @@
   
   {% load static %}
   
-  <link rel="stylesheet" href="{% static 'css/receps.css'%}">
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+   
+  <link rel="stylesheet" href="{% static 'css/header.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
 
 {% endblock %}
 
 {% block 'body' %}
 
-  <!-- HEADER -->
-  {% include '../partials/header.html' %}
-    
-  <!-- RECIPE-LIST-ITEM -->  
-    
-  {% include '../partials/recipe.html' %}
+  {% include 'global/partials/menu.html' %}
   
+  {% include 'global/partials/header.html' %}
+         
+  {% include 'global/partials/recipe.html' %}
   
-
 
 {% endblock %}

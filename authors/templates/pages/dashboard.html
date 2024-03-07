@@ -4,45 +4,20 @@
 
   {% load static %}
   
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_min.css' %}">
   
   <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
 {% endblock %}
 
 {% block 'body' %}
 
-  {% include '../partials/header_min.html'%}
+  {% include 'global/partials/header_min.html'%}
   
   {% for recipe in recipes %}
   
-    
-    <div class="main-crud">
-    
-      <hr>
-      
-      <div class="crud-content">
-      
-        <span>{{recipe}}</span>
-        
-        <a class="crud-edit-button" href="{% url 'authors:edit' id=recipe.id %}">
-        
-          <i class="fas fa-edit"></i>
-          
-        </a>
-        
-        <form class="inline-form" method="POST" action="{%url 'authors:delete' id=recipe.id %}">
-        
-          {% csrf_token %}
-        
-          <button class="crud-trash-button"><i class="fas fa-trash"></i></button>
-          
-        </form>
-             
-              
-      </div>
-      
-      <hr>
-      
-    </div>
+    {% include '../partials/recipe_dashboard.html' %}
+  
   {% endfor %}
 {% endblock %}

@@ -27,7 +27,7 @@ class AuthRegister(View):
         Handle POST requests for user registration.
         """
         email = self.request.POST.get('email')
-        password = request.POST.get('password')
+        password = self.request.POST.get('password')
         password_repeat = self.request.POST.get('password-repeat')
 
         if email in User.objects.values_list('email', flat=True):
