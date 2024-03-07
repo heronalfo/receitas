@@ -1,0 +1,40 @@
+.main-profile hr{
+
+  color: var(--color-primary-dark);
+  border-width: 2px;
+}
+
+.main-profile a{
+
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.header-profile-title{
+
+  font-family: var(--font-heading);
+  font-size: 25px;
+  color: var(--color-primary-dark);
+  margin-right: auto; 
+}
+
+.header-profile-enter,
+.header-profile-register {
+  background: var(--color-primary-dark);
+  border-radius: 3px;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+  text-align: left;
+  
+}
+
+.header-profile-enter {
+  margin-right: 5px;
+  
+}
+
+.header-profile-register {
+  margin-left: auto;
+  
+}

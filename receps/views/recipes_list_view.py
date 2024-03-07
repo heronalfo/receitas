@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.db.models import Q
 from django.core.paginator import Paginator
 from django.views.generic import ListView
+from django.http import JsonResponse
 from django.views import View
 from ..models import Recipes, Categories
 from ..utils import pagination
@@ -60,6 +61,8 @@ class RecipesListView(ListView):
         """
         qs = super().get_queryset(*args, **kwargs)
         qs.filter(is_published=True)
+        
+        qs = qs.prefetch_related('user', 'category')
         
         return qs
         
@@ -148,9 +151,64 @@ class RecipesSearchView(View):
         query_params = self.request.GET.copy()
         query_params['search'] = search
         page_number = self.request.GET.get('page', 1)
+        
         page_obj, pages = pagination.make_pagination(self.request, recipes, PERPAGE, page_number)
         
-        return render(self.request, 'pages/recipes.html', {'recipes': page_obj, 'pages': pages, 'add': query_params['search']})
+        return render(
+        
+        self.request,
+        
+        'pages/recipes.html',
+            
+          {
+            
+              'recipes': page_obj,
+              'pages': pages,
+        
+              'add': query_params['search'],
+              'search': search
+            
+          }
+        )
     
-    def get(self, *args):        
+    def get(self, *args):
         return redirect(reverse('recipes:recipes'))
+        
+class RecipesListViewAPIV1(RecipesListView):
+    
+    def render_to_response(self, *args, **kwargs):
+        
+        recipes = self.get_queryset().values()
+        
+        
+        return JsonResponse(
+        
+        
+            {
+            
+                'recipes': list(recipes),
+                'safe': False
+            
+            }
+        
+        )
+
+class RecipeViewAPIV1(RecipesListView):
+    
+    def render_to_response(self, *args, **kwargs):
+        
+        recipe = self.get_queryset().filter(slug=self.kwargs["slug"]).values()
+        
+        
+        return JsonResponse(
+        
+        
+            {
+            
+                'recipe': list(recipe),
+                'safe': False
+            
+            }
+        
+        )
+

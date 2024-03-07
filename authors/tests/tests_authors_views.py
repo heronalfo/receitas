@@ -24,10 +24,10 @@ class AuthorsViewsTest(TestsAuthorsBase):
     
         view = resolve(reverse('authors:edit', args=(1, )))
         
-        self.assertIs(view.func.view_class, views.RecepsEdit)
+        self.assertIs(view.func.view_class, views.AuthorsRecipeEdit)
     
     def test_authors_delete_views_is_correct(self): 
     
         view = resolve(reverse('authors:delete', args=(1, )))
         
-        self.assertIs(view.func.view_class, views.AuthorsRecepeDelete)
+        self.assertIs(view.func.view_class, views.AuthorsRecipeDelete)

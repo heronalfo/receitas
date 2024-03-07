@@ -5,112 +5,16 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/form.css' %}">
   
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="{% static 'css/header_min.css' %}">
   
-  
-  
-  
+  <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+    
 {% endblock %}
 
 {% block 'body' %}
 
-  {% include 'partials/header_min.html' %}
-  <div class="main-container">
-    <div class="main-content main-content-list container">
+  {% include 'global/partials/header_min.html' %}
   
-        <form class="recipe recipe-list-item" method="POST" action="{% url 'authors:create'%}">
-        
-            {% csrf_token %}        
-            <!-- IMAGE -->
-            <div class="recipe-cover">
-                <img src="https://via.placeholder.com/1280x720.png/000">
-            </div>
-            
-            <!-- TITLE -->
-            <div class="recipe-title-container">
-                <h2>{{form.title}}</h2>
-            </div>
-            
-            <!-- AUTHOR -->
-            <div class="recipe-author">
-                <span class="author-item">
-                    <i class="fas fa-user"></i>
-                    {% if receps_user is not None%}
-                    
-                      {{receps_user}}
-                      
-                    {% else %}
-                    
-                      Unknow
-                      
-                    {% endif%}
-                </span>
-                
-                <span class="author-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{date}}
-                </span>
-                
-                <span class="author-item">
-                    <i class="fas fa-layer-group"></i>
-                    {{form.category}}
-                </span>
-            </div>
-                                    
-            <!-- METADATA AND USER INFO -->
-            <div class="recipe-meta-container">
-                <!-- TIME OF PREPARATION -->
-                <div class="recipe-meta recipe-preparation">
-                    <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i>Preparo</h3>
-                    
-                    <div class="recipe-meta-text">
-                        {{form.time}}
-                    </div>
-                </div>
-                
-                <!-- NUMBERS OF PORTIONS -->
-                <div class="recipe-meta recipe-servings">
-                    <h3 class="recipe-meta-title">
-                        <i class="fas fa-pizza-slice"></i>
-                                                
-                        Portions
-                    </h3>
-                    
-                    <div class="recipe-meta-text">
-                    
-                   
-                    
-                    {{form.portions}}
-                    
-                   
-                    
-                    
-                    
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recipe-title-container">
-            
-                <h3>
-                  <i class="fas fa-blender"></i> 
-                  Details of recipe
-                </h3>
-                
-                <h5>{{form.description}}</h5>
-            </div>
-            
-            <div class="recipe-footer">
-            
-                <button class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:create' %}">
-                    <i class="fas fa-utensils"></i>
-                    <span>Create</span>
-                </button>
-            </div>
-                            
-        </form>
-      
-    </div>
-</div>
+  {% include '../partials/recipe_create.html' %}
   
 {% endblock %}

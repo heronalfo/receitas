@@ -1,8 +1,8 @@
 from django.urls import reverse, resolve
 from ..models import Categories
-from .tests_recipes_base import TestsRecipesBase
+from .tests_recipes_base import TestRecipesBase
 
-class RecipesURLsTest(TestsRecipesBase):    
+class RecipesURLsTest(TestRecipesBase):    
     
     def test_recipes_home_url_is_correct(self):
         

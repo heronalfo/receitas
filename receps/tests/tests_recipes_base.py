@@ -2,12 +2,12 @@ from django.test import TestCase
 from .. import models
 
 
-class TestsRecipesBase(TestCase):
+class TestRecipesBase(TestCase):
     
     def setUp(self):
-        # Cria uma categoria
+        
         self.category = self.make_category(category_name="Teste")
-        # Cria uma receita associada à categoria
+       
         self.recipe = self.make_recipe(category=self.category)
 
     def make_category(self, category_name="Teste"):

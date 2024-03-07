@@ -1,22 +1,22 @@
 from django.urls import reverse, resolve
-from .tests_receps_base import TestsRecepsBase
+from .tests_recipes_base import TestRecipesBase
 from time import sleep
 import pdb
 
-class RecepsStatusCodeTest(TestsRecepsBase):
+class RecipesStatusCodeTest(TestRecipesBase):
 
-    def test_receps_home_status_code_is_200(self):
+    def test_recipes_home_status_code_is_200(self):
         
-        response = self.client.get(reverse('receps:receps'))
+        response = self.client.get(reverse('recipes:recipes'))
                        
         self.assertEqual(response.status_code,  200)
                         
-    def test_receps_recipe_status_code_is_200(self):
+    def test_recipes_recipe_status_code_is_200(self):
       
-        response = self.client.get(reverse('receps:receps-recipe', kwargs={'slug': 'test-recipe'}))              
+        response = self.client.get(reverse('recipes:recipes-recipe', kwargs={'slug': 'test-recipe'}))              
         self.assertEqual(response.status_code,  200)
         
-    def test_receps_search_status_code_is_200(self):
+    def test_recipes_search_status_code_is_200(self):
       
-        response = self.client.get(reverse('receps:search'))              
+        response = self.client.get(reverse('recipes:search'))              
         self.assertEqual(response.status_code, 302)

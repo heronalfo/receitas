@@ -1,0 +1,22 @@
+.recipe-cover{
+
+  height: 200px;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    display: none;
+    color: transparent;
+
+}
+
+
+.fa-camera{
+
+  color: white;
+}

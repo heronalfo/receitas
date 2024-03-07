@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
-from .tests_recipes_base import TestsRecipesBase
+from .tests_recipes_base import TestRecipesBase
 
-class RecipesTemplatesTest(TestsRecipesBase):
+class RecipesTemplatesTest(TestRecipesBase):
 
     def test_recipes_home_template_load_is_correct(self):
     

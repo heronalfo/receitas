@@ -1,0 +1,55 @@
+{% extends 'extension.html' %}
+
+{% block 'head' %}
+
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/profile_edit.css' %}">
+  
+{% endblock %}
+
+{% block 'body' %}
+  
+  <div class="main-container">
+  
+    <div class="main-form">
+    
+      <form class="form-author-edit" method="POST">
+      
+        {% csrf_token %}
+      
+        <div class="form-author-image-edit">
+        
+          <div class="author-image">      
+          </div>
+          
+           <h7>Edit Photograph<h7>
+           
+        </div>
+        
+        <br>
+        <hr>
+      
+        {{form.name}}
+        <hr>
+        {{form.bio}}
+        <hr>
+        {{form.link}}
+        <hr>
+        
+        <button class="button-author-save">
+        
+          <i class="fas fa-user"></i>
+          
+          Save
+                
+        </button>
+        
+        <hr>
+      
+      </form>
+  
+    </div>
+  </div>
+  
+{% endblock %}

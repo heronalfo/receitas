@@ -42,7 +42,7 @@ class AuthorsCreate(View):
         """
         Handle GET requests for creating a new recipe.
         """
-        form = FormsAuthors()
+        form = FormsAuthors(request.POST or None, request.FILES or None)
         now = datetime.now()
         return render(
             request,
@@ -58,7 +58,8 @@ class AuthorsCreate(View):
         """
         Handle POST requests for creating a new recipe.
         """
-        form = FormsAuthors()
+        form = FormsAuthors(request.POST or None, request.FILES or None)
+        
         title = request.POST.get('title')
         user = request.user
         category = int(request.POST.get('category'))
@@ -67,8 +68,10 @@ class AuthorsCreate(View):
         is_published = request.POST.get('is_published')
         time = request.POST.get('time')
         
+        cover = request.FILES.get('cover')
+        
         category_instance = Categories.objects.get(id=category)
-
+                
         Recipes(
             title=title,
             user=request.user,
@@ -76,8 +79,11 @@ class AuthorsCreate(View):
             portions=portions,
             description=description,
             is_published=True if is_published == 'on' else False,
-            time=time
+            time=time,
+            cover=cover
         ).save()
+        
+        save_form = form.save(commit=True)
         
         return redirect(reverse('authors:dashboard'))
 
@@ -118,7 +124,7 @@ class AuthorsRecipeDelete(View):
     """
     View for deleting an existing recipe by the author.
     """
-    def post(self, *args, **kwargs):
+    def get(self, *args, **kwargs):
         """
         Handle POST requests for deleting an existing recipe.
         """

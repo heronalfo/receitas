@@ -1,0 +1,33 @@
+<button class="button-show-menu button-show-menu-closed">
+
+  <i class="fas fa-bars"></i>
+</button>
+
+<div class="menu-container">
+  <button class="button-close-menu button-close-menu-closed">
+
+  <i class="fas fa-times-circle"></i>
+  </button>
+  
+  <div class="menu-content">
+  
+    <nav class="menu-nav">
+    
+      {% if request.is_authenticated %}
+      
+        <a href="{% url 'authors:profile' %}">Profile</a>
+        <a href="{% url 'authors:dashboard' %}"> Dashboard</a>
+        <a href="{% url 'authors:create' %}">New recipe</a>
+        <a href="#">Logout</a>
+      
+      {% else %}
+      
+        <a href="{% url 'auth:login' %}">Login</a>
+        <a href="{% url 'auth:register' %}">Sign up </a>
+        
+      {% endif%}
+      
+    </nav>
+    
+  </div>
+</div>

@@ -28,5 +28,17 @@ urlpatterns = [
       'category/<str:name>/',
       views.CategoryListView.as_view(),
       name='category'),
+      
+  path(
+  
+      'api/v1/',
+      views.RecipesListViewAPIV1.as_view(),
+      name='recipes-api-v1'),
+  
+  path(
+  
+      'api/v1/<slug:slug>/',
+      views.RecipeViewAPIV1.as_view(),
+      name='recipe-api-v1'),
   
 ]
