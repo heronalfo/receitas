@@ -46,8 +46,8 @@ class FormsAuthorsEdit(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.fields['name'].widget.attrs.update({'id': 'author-name'})
+        self.fields['name'].widget.attrs.update({'id': 'author-name', 'placeholder': 'Your user name'})
         
-        self.fields['bio'].widget.attrs.update({'id': 'author-bio'})
+        self.fields['bio'].widget.attrs.update({'id': 'author-bio', 'placeholder': 'Your bio'})
         
-        self.fields['link'].widget.attrs.update({'id': 'author-link'})
+        self.fields['link'].widget.attrs.update({'id': 'author-link', 'placeholder': 'Links for yours redes sociales'})
