@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="main-container">
     <div class="main-content main-content-list container">
   
@@ -10,7 +11,7 @@
             
             <!-- TITLE -->
             <div class="recipe-title-container">
-                <h2>{{recipe.title}}</h2>
+                <h2>{% translate recipe.title %}</h2>
             </div>
             
             <!-- AUTHOR -->
@@ -23,7 +24,7 @@
                       
                     {% else %}
                     
-                      Unknow
+                      {% translate 'Unknow' %}
                       
                     {% endif%}
                 </span>
@@ -35,7 +36,7 @@
                 
                 <span class="author-item">
                     <i class="fas fa-layer-group"></i>
-                    {{recipe.category.name}}
+                    {% translate recipe.category.name %}
                 </span>
             </div>
                                     
@@ -55,14 +56,14 @@
                     <h3 class="recipe-meta-title">
                         <i class="fas fa-pizza-slice"></i>
                                                 
-                        Portions
+                        {% translate 'Portions' %}
                     </h3>
                     
                     <div class="recipe-meta-text">
                     
                     {% if recipe.portions < 2%}
                     
-                    {{recipe.portions}} Portion
+                    {{recipe.portions}} {% translate 'Portion' %}
                     
                     {% endif %}
                     
@@ -81,16 +82,16 @@
             
                 <h3>
                   <i class="fas fa-blender"></i> 
-                  Details of recipe
+                  {% translate 'Details of recipe' %}
                 </h3>
                 
-                <h5>{{recipe.description}}</h5>
+                <h5>{% translate recipe.description %}</h5>
             </div>
             
             <footer class="recipe-footer">
                 <a class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipes' %}">
                     <i class="fas fa-eye"></i>
-                    <span>Read more recipes</span>
+                    <span>{% translate 'Read more recipes' %}</span>
                 </a>
             </footer>
                             

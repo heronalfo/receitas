@@ -1,4 +1,5 @@
 {% extends 'extension.html' %}
+{% load i18n %}
 
 {% block 'head' %}
 
@@ -35,11 +36,11 @@
       
         {%csrf_token%}
         
-        <h1> Verification </h1>        
+        <h1> {% translate 'Verification' %} </h1>        
                                                   
         <hr>
         
-        <h4>confirmation code sent to {{email}} the token will expire in 30 minutes {{token}}</h4>
+        <h4>{% translate 'confirmation code sent to {{email}} the token will expire in 30 minutes' %} {{token}}</h4>
         
         <br><br>
         
@@ -48,21 +49,21 @@
         {% if messages %}
         
           {% for message in messages%}
-          <h5>( ! ) {{ message }}</h5>
+          <h5>( ! ) {% translate message %}</h5>
           
           {% endfor %}
         
         {% endif %}
   
 
-                              
+        <br>                   
         <a href="{% url 'auth:resend' %}">
         
-          Email not sent? Resend
+          {% translate 'Email not sent? Resend' %}
           
         </a>
                         
-        <button id="button-register">Register</button>
+        <button id="button-register">{% translate 'To check' %}</button>
         
       </form>
       

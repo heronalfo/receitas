@@ -48,12 +48,12 @@ class FormsAuthorsEdit(forms.ModelForm):
         
         self.fields['name'].widget.attrs.update({'id': 'author-name', 'placeholder': 'Your user name'})
         
-<<<<<<< HEAD
         self.fields['bio'].widget.attrs.update({'id': 'author-bio', 'placeholder': 'Your bio'})
         
         self.fields['link'].widget.attrs.update({'id': 'author-link', 'placeholder': 'Links for yours redes sociales'})
-=======
-        self.fields['bio'].widget.attrs.update({'id': 'author-bio', 'placeholder': 'Your bio'}})
+
+        self.fields['name'].widget.attrs.update({'id': 'author-name'})
         
-        self.fields['link'].widget.attrs.update({'id': 'author-link', 'placeholder': 'Links for yours redes sociales'}})
->>>>>>> origin/main
+        self.fields['bio'].widget.attrs.update({'id': 'author-bio'})
+        
+        self.fields['link'].widget.attrs.update({'id': 'author-link'})

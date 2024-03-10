@@ -1,5 +1,3 @@
-/* Adicione este CSS ao seu arquivo de estilo (por exemplo, style.css) */
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -11,7 +9,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 110vh;
-    background-color: var(--color-gray-1); /* Cor de fundo geral */
+    background-color: var(--color-gray-1);
 }
 
 .main-form {
@@ -20,8 +18,8 @@ body {
     background-color: var(--color-gray-1);
     border-radius: 12px;
     width: 90%;
-    padding: 40px; /* Reduzi o padding para ficar mais equilibrado */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra sutil */
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 form {
@@ -30,7 +28,7 @@ form {
 
 
 h1 {
-    color: #333; /* Cor do texto principal */
+    color: #333;
     font-family: var(--font-heading);
 }
 
@@ -39,7 +37,7 @@ h4 {
     font-size: 20px;
     font-family: Arial, sans-serif;
     opacity: 0.3;
-    color: #333; /* Cor do texto principal */
+    color: #333;
 
 }
 
@@ -53,7 +51,7 @@ h5{
 }
 
 hr {
-    border: 0.5px solid #ddd; /* Cor da linha separadora */
+    border: 0.5px solid #ddd;
     color: #333;
     height: 1px;
     background-color: black;
@@ -69,7 +67,6 @@ a{
 
 }
 
-/* Estilos CSS adicionais */
 .password-content {
   display: flex;
   align-items: center;
@@ -80,64 +77,45 @@ input[type="password"] {
   padding-right: 30px;
 }
 
-.password-toggle {
-  position: relative;
-  cursor: pointer;
-  margin-left: -30px;
-  z-index: 1;
-}
 
-.password-toggle::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: white;
-}
+
 
 input {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     box-sizing: border-box;
+    border: none;
+    background: none;   
     margin: 10px 0;
-    border: 2px solid #333; /* Cor da borda do input padrÃ£o */
-    border-radius: 8px;
-    transition: border-color 0.3s ease; /* Adiciona uma transiÃ§Ã£o suave na cor da borda */
-}
-
-input:focus {
-    border-color: #27ae60; /* Cor da borda quando o input estÃ¡ focado */
+    transition: border-color 0.3s ease;
+    outline: none;
+    background-color: none;
 }
 
 
+.password-content{
 
-#id_email {
-    /* Estilo especÃ­fico para o input com ID 'email' */
-    border-color: var(--color-primary-dark); /* Cor da borda para o input com ID 'email' */
-    font-weight: bold; /* Fonte em negrito para o input com ID 'email' */
+  border: 2px solid;
+  border-radius: 8px;
+ 
 }
 
 button {
 
-    background-color: var(--color-primary-dark); /* Nova cor para o botÃ£o, um verde suave */
-    color: #fff; /* Cor do texto do botÃ£o */
+    background-color: var(--color-primary-dark); 
+    color: #fff; 
     margin-top: 30px;
     padding: 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Adiciona uma transiÃ§Ã£o suave no tamanho do botÃ£o */
+    transition: transform 0.3s ease;
 }
 
 button:hover {
-    transform: scale(1.05); /* Aumenta o tamanho do botÃ£o ao passar o mouse sobre ele */
+    transform: scale(1.05); 
 }
 
-/* Adicione media query para ajustar estilos para telas menores (mobile) */
 @media screen and (max-width: 768px) {
     .formulario {
         width: 90%;
@@ -146,7 +124,7 @@ button:hover {
 
     h4 {
     
-        text-align: center; /* Alinha os tÃ­tulos Ã  esquerda para telas menores */
+        text-align: center; 
     }
     
     h5{

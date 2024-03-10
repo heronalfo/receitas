@@ -1,4 +1,5 @@
 {% extends 'extension.html' %}
+{% load i18n %}
 
 {% block 'head' %}
 
@@ -38,14 +39,14 @@
         
         <hr>
         
-        <h4>email: </h4>
+        <h4>{% translate 'email' %}: </h4>
         
         {{ form.email }}
         
         {% if messages %}
         
           {% for message in messages%}
-          <h5>( ! ) {{ message }}</h5>
+          <h5>( ! ) {% translate message %}</h5>
                     
           {% endfor %}
         
@@ -53,7 +54,7 @@
         
         <hr>
         
-        <h4>password: </h4>
+        <h4>{% translate 'password' %}: </h4>
         
         <div class="password-content">
           <input type="password" name="password-repeat" id="passwordInput" minlength="8" required>
@@ -66,14 +67,14 @@
         
         <a href="{% url 'auth:register' %}">
         
-          Don't have an account? Sign up 
+          {% translate "Don't have an account? Sign up" %}
           
         </a>
         
         
-        <button id="button-register">Cadastrar </button>
+        <button id="button-register">{% translate 'Login' %}</button>
                       
-      </forms>
+      </form>
       
       
     </div>

@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="main-container">
     <div class="main-content main-content-list container">
   
@@ -69,7 +70,7 @@
                     <h3 class="recipe-meta-title">
                         <i class="fas fa-pizza-slice"></i>
                                                 
-                        Portions
+                        {% translate 'Portions' %}
                     </h3>
                     
                     <div class="recipe-meta-text">
@@ -95,7 +96,7 @@
             
                 <h3>
                   <i class="fas fa-blender"></i> 
-                  Details of recipe
+                  {% translate 'Details of recipe' %}
                 </h3>
                 
                 <h5>{{form.description}}</h5>
@@ -105,7 +106,7 @@
             
                 <button class="recipe-read-more button button-dark button-full-width" href="{% url 'recipes:recipes' %}">
                     <i class="fas fa-edit"></i>
-                    <span>Edit</span>
+                    <span>{% translate 'Edit' %}</span>
                 </button>
             </div>
                             

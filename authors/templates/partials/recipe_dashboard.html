@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="main-container">
     <div class="main-content main-content-list container">
   
@@ -51,20 +53,20 @@
                     <h3 class="recipe-meta-title">
                         <i class="fas fa-pizza-slice"></i>
                                                 
-                        Portions
+                        {% translate 'Portion' %}
                     </h3>
                     
                     <div class="recipe-meta-text">
                     
                     {% if recipe.portions < 2%}
                     
-                    {{recipe.portions}} Portion
+                    {{recipe.portions}} {% translate 'Portion' %}
                     
                     {% endif %}
                     
                     {% if recipe.portions > 2%}
                     
-                    {{recipe.portions}} Portions
+                    {{recipe.portions}} {% translate 'Portions' %}
                     
                     {% endif %}
                     
@@ -76,7 +78,7 @@
             <footer class="recipe-footer">
                 <a class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:edit' id=recipe.id %}">
                     <i class="fas fa-edit"></i>
-                    <span>To edit</span>
+                    <span>{% translate 'To edit' %}</span>
                 </a>
             </footer>
                             

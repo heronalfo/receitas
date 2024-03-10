@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="main-container">
     <div class="main-content main-content-list container">
   
@@ -26,7 +28,7 @@
                       
                     {% else %}
                     
-                      Unknow
+                      {% translate 'Desconhecido' %}
                       
                     {% endif%}
                 </span>
@@ -46,7 +48,7 @@
             <div class="recipe-meta-container">
                 <!-- TIME OF PREPARATION -->
                 <div class="recipe-meta recipe-preparation">
-                    <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i>Preparo</h3>
+                    <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i>{% translate 'Preparation' %}</h3>
                     
                     <div class="recipe-meta-text">
                         {{form.time}}
@@ -58,7 +60,7 @@
                     <h3 class="recipe-meta-title">
                         <i class="fas fa-pizza-slice"></i>
                                                 
-                        Portions
+                        {% translate 'Portions' %}
                     </h3>
                     
                     <div class="recipe-meta-text">
@@ -79,7 +81,7 @@
             
                 <h3>
                   <i class="fas fa-blender"></i> 
-                  Details of recipe
+                  {% translate 'Details of recipe' %}
                 </h3>
                 
                 <h5>{{form.description}}</h5>
@@ -89,7 +91,7 @@
             
                 <button class="recipe-read-more button button-dark button-full-width" href="{% url 'authors:create' %}">
                     <i class="fas fa-utensils"></i>
-                    <span>Create</span>
+                    <span>{% translate 'Create' %}</span>
                 </button>
             </div>
                             

@@ -95,7 +95,7 @@ class AuthValidation(View):
             self.request.session['token_validation_email'] = {'token': str(novo_token), 'time': time_expiration}
             
         else:
-            token = request.session.get('token_validation_email', {}).get('token')
+            token = self.request.session.get('token_validation_email', {}).get('token')
         
         return render(self.request, 'pages/validation.html', {'email': email, 'token': token})
 
@@ -111,19 +111,19 @@ class AuthValidation(View):
         if not email or not password or not token:
             return render(self.request, 'pages/register.html')
 
-        elif entrada_token != token:
+        if entrada_token != token:
             messages.error(self.request, 'The token insert are incorrect')
             
-        else:        
-            User.objects.create_user(username=email, password=password)
-            user = authenticate(self.request, username=email, password=password)
-           
-            if not user:            
-                return render(self.request, 'pages/validation.html', {'email': email, 'status': '0'})
                 
-            else:                
-                django_login(self.request, user)
-                return redirect(reverse('recipes:recipes'))
+        User.objects.create_user(username=email, password=password)
+        user = authenticate(self.request, username=email, password=password)
+       
+        if not user:            
+            return render(self.request, 'pages/validation.html', {'email': email, 'status': '0'})
+            
+        else:                
+            django_login(self.request, user)
+            return redirect(reverse('recipes:recipes'))
                 
 
 class AuthResend(View):
@@ -140,6 +140,6 @@ class AuthResend(View):
         
         novo_token = randrange(100_000_000, 999_999_999)
         time_expiration = (timezone.now() + timedelta(seconds=60*30)).strftime('%Y-%m-%dT%H:%M:%S')
-        request.session['token_validation_email'] = {'token': str(novo_token), 'time': time_expiration}
+        self.request.session['token_validation_email'] = {'token': str(novo_token), 'time': time_expiration}
         
         return redirect(reverse('auth:validation/'))
