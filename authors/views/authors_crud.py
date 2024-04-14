@@ -58,17 +58,15 @@ class AuthorsCreate(View):
         """
         Handle POST requests for creating a new recipe.
         """
+    
         form = FormsAuthors(request.POST or None, request.FILES or None)
         
         title = request.POST.get('title')
-        user = request.user
         category = int(request.POST.get('category'))
         portions = int(request.POST.get('portions'))
         description = request.POST.get('description')
         is_published = request.POST.get('is_published')
         time = request.POST.get('time')
-        
-        cover = request.FILES.get('cover')
         
         category_instance = Categories.objects.get(id=category)
                 
@@ -79,12 +77,10 @@ class AuthorsCreate(View):
             portions=portions,
             description=description,
             is_published=True if is_published == 'on' else False,
-            time=time,
-            cover=cover
+            time=time
+            
         ).save()
-        
-        save_form = form.save(commit=True)
-        
+                        
         return redirect(reverse('authors:dashboard'))
 
 @method_decorator(login_required(login_url='auth:login'), name='dispatch')

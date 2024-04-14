@@ -98,7 +98,15 @@ class CategoryListView(RecipesListView):
         Returns:
             queryset: Queryset object containing the recipes of the specified category.
         """
-        self.category = Categories.objects.get(name=self.kwargs["name"])
+        
+        try:
+        
+            self.category = Categories.objects.get(name=self.kwargs["name"])
+            
+        except:
+        
+            return None
+            
         qs = super().get_queryset(**kwargs)
         qs.filter(category=self.category.id, is_published=True)
         
@@ -111,20 +119,33 @@ class CategoryListView(RecipesListView):
         Returns:
             dict: Dictionary containing the data context for the category page.
         """
+        
         ctx = super().get_context_data(**kwargs)
         
-        ctx.update({'category_name': self.category.name, 'icon': self.category.icon})
+        if ctx is not None:
+                
+            ctx.update({'category_name': self.category.name, 'icon': self.category.icon})
+            
+            return ctx
+            
+        else:
         
-        return ctx
+            return redirect(reverse('recipes:recipes'))
 
-class RecipeView(RecipesListView):
+class RecipeView(View):
     """
     View to display details of a recipe.
     """
     def get(self, *args, **kwargs):       
         try:
-            recipe = self.get_recipe_by_slug(self.kwargs["slug"]).first()
-        except:
+        
+            recipe = Recipes.objects.get(slug=self.kwargs["slug"])
+            
+            return render(self.request, 'pages/recipe.html', {'recipe': recipe})
+            
+            return 
+            
+        except ValueError:
             recipe = {
                 'title': 'Recipe not found', 
                 'description': 'Name of recipe incorrect',
@@ -174,41 +195,3 @@ class RecipesSearchView(View):
     def get(self, *args):
         return redirect(reverse('recipes:recipes'))
         
-class RecipesListViewAPIV1(RecipesListView):
-    
-    def render_to_response(self, *args, **kwargs):
-        
-        recipes = self.get_queryset().values()
-        
-        
-        return JsonResponse(
-        
-        
-            {
-            
-                'recipes': list(recipes),
-                'safe': False
-            
-            }
-        
-        )
-
-class RecipeViewAPIV1(RecipesListView):
-    
-    def render_to_response(self, *args, **kwargs):
-        
-        recipe = self.get_queryset().filter(slug=self.kwargs["slug"]).values()
-        
-        
-        return JsonResponse(
-        
-        
-            {
-            
-                'recipe': list(recipe),
-                'safe': False
-            
-            }
-        
-        )
-

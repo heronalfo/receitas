@@ -1,5 +1,5 @@
-from django.urls import path, include
-from . import views
+from django.urls import path
+from .views import *
 
 app_name = "recipes"
 
@@ -8,37 +8,39 @@ urlpatterns = [
   path(
   
       '',
-      views.RecipesListView.as_view(),
+      RecipesListView.as_view(),
       name='recipes'),
       
   path(
   
       'search/',
-      views.RecipesSearchView.as_view(),
+      RecipesSearchView.as_view(),
       name='search'),
   
   path(
   
       'recipe/<slug:slug>/',
-      views.RecipeView.as_view(),
+      RecipeView.as_view(),
       name='recipes-recipe'),
   
   path(
   
       'category/<str:name>/',
-      views.CategoryListView.as_view(),
+      CategoryListView.as_view(),
       name='category'),
+  
+  path(
+  
+  
+      'api/v1/',
+      RecipesListViewAPIV1.as_view(),
+      name='api-recipes'),
       
   path(
   
-      'api/v1/',
-      views.RecipesListViewAPIV1.as_view(),
-      name='recipes-api-v1'),
   
-  path(
-  
-      'api/v1/<slug:slug>/',
-      views.RecipeViewAPIV1.as_view(),
-      name='recipe-api-v1'),
-  
+      'api/v1/detail/',
+      RecipesDetailListViewAPIV1.as_view(),
+      name='api-detail-recipe'),
+                   
 ]

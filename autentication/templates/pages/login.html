@@ -41,12 +41,12 @@
         
         <h4>{% translate 'email' %}: </h4>
         
-        {{ form.email }}
+        <input type="email" name="email" id="emailInput" minlength="8" placeholder="exemplo@gmail.com" required>
         
         {% if messages %}
         
           {% for message in messages%}
-          <h5>( ! ) {% translate message %}</h5>
+          <h5>( ! ) {{ message }}</h5>
                     
           {% endfor %}
         
@@ -57,7 +57,7 @@
         <h4>{% translate 'password' %}: </h4>
         
         <div class="password-content">
-          <input type="password" name="password-repeat" id="passwordInput" minlength="8" required>
+          <input type="password" name="password" id="passwordInput" minlength="8" required>
           
           <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility()"></i>
           

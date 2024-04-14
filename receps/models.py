@@ -14,7 +14,7 @@ class Categories(models.Model):
      
 class Recipes(models.Model):
     
-    cover = models.ImageField(upload_to='images/', default='', null=True, blank=True)
+    #cover = models.ImageField(upload_to='images/', default='', null=True, blank=True)
     
     title = models.CharField(max_length=42)
 

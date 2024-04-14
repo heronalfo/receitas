@@ -1,7 +1,13 @@
 
 __pycache__/
 
+# Static files
+
 media/
+
+static/
+
+#py
 
 *.py[cod]
 
@@ -11,7 +17,7 @@ media/
 
 # Tests Coverage
 
-htmlcov/
+htmlcolv/
 
 .coverage
 

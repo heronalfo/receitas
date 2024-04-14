@@ -1,0 +1,58 @@
+.menu-container {
+
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    min-height: 100vh;
+    overflow-y: auto;
+    background: var(--color-primary-dark);
+    z-index: 2;
+    cursor: pointer;
+    transition: left 0.3s ease-in-out;
+}
+
+.menu-container a {
+    color: white;
+}
+
+.button-close-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--color-white);
+    border: none;
+    background: none;
+    font-size: 20px;
+    z-index: 3;
+}
+
+.menu-hidden {
+    left: -355px;
+}
+
+.button-show-menu {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    color: var(--color-white);
+    background: none;
+    font-size: 30px;
+    border: none;
+    z-index: 3;
+    padding: 10px;
+    visibility: visible;
+    opacity: 1;
+    transition: left 0.3s ease-in-out;
+    background-color: var(--color-primary-dark);
+    border-radius: 8px;
+}
+
+.menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    font-family: var(--font-heading);
+    font-size: 20px;
+}

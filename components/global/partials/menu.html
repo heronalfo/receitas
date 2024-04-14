@@ -1,34 +1,23 @@
 {% load i18n %}
 <button class="button-show-menu button-show-menu-closed">
-
-  <i class="fas fa-bars"></i>
+    <i class="fas fa-bars"></i>
 </button>
 
-<div class="menu-container">
-  <button class="button-close-menu button-close-menu-closed">
-
-  <i class="fas fa-times-circle"></i>
-  </button>
-  
-  <div class="menu-content">
-  
-    <nav class="menu-nav">
-    
-      {% if request.is_authenticated %}
-      
-        <a href="{% url 'authors:profile' %}">Profile</a>
-        <a href="{% url 'authors:dashboard' %}"> Dashboard</a>
-        <a href="{% url 'authors:create' %}">New recipe</a>
-        <a href="#">{% translate 'Logout' %}</a>
-      
-      {% else %}
-      
-        <a href="{% url 'auth:login' %}">{% translate 'Login' %}</a>
-        <a href="{% url 'auth:register' %}">{% translate 'Sing Up' %}</a>
-        
-      {% endif%}
-      
-    </nav>
-    
-  </div>
+<div class="menu-container menu-hidden">
+    <button class="button-close-menu button-close-menu-closed">
+        <i class="fas fa-times-circle"></i>
+    </button>
+    <div class="menu-content">
+        <nav class="menu-nav">
+            {% if user.is_authenticated %}
+                <a href="{% url 'authors:profile' username=user.username %}">{% translate 'Profile' %}</a>
+                <a href="{% url 'authors:dashboard' %}">{% translate 'Dashboard' %}</a>
+                <a href="{% url 'authors:create' %}">{% translate 'New recipe' %}</a>
+                <a href="{% url 'auth:logout' %}">{% translate 'Logout' %}</a>
+            {% else %}
+                <a href="{% url 'auth:login' %}">{% translate 'Login' %}</a>
+                <a href="{% url 'auth:register' %}">{% translate 'Sign Up' %}</a>
+            {% endif %}
+        </nav>
+    </div>
 </div>

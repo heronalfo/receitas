@@ -9,15 +9,42 @@
   <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
   
   <link rel="stylesheet" href="{% static 'css/recipes.css' %}">
+  
+  <style>
+  
+    .recipes-not-found{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    
+    
+    }
+  </style>
 {% endblock %}
 
 {% block 'body' %}
 
   {% include 'global/partials/header_min.html'%}
   
+  
+  {% if recipes %}
   {% for recipe in recipes %}
   
     {% include '../partials/recipe_dashboard.html' %}
   
   {% endfor %}
+  
+  {% else %}
+  
+    <div class="recipes-not-found">
+    
+      <h1>Recipes not found</h1>
+    
+    </div>
+    
+  {% endif %}
+  
+  
 {% endblock %}

@@ -7,12 +7,12 @@ class FormsAuthors(forms.ModelForm):
     class Meta:
     
         model = Recipes
-        fields = ['title', 'category', 'portions', 'description', 'time', 'cover']
+        fields = ['title', 'category', 'portions', 'description', 'time'] #cover
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.fields['cover'].widget.attrs.update({'id': 'cover'})
+        #    self.fields['cover'].widget.attrs.update({'id': 'cover'})
         
         self.fields['title'].widget.attrs.update({'id': 'dash-title','placeholder': 'Exemple title', 'minlength': 6})
         

@@ -13,4 +13,6 @@ urlpatterns = [
     
     path('resend/', views.AuthResend.as_view(), name='resend'),
     
+    path('logout/', views.AuthLogout, name='logout'),
+    
 ]

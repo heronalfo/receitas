@@ -24,11 +24,12 @@
 
 {% block 'body' %}
 
-  <!-- {% include 'global/partials/menu.html' %} -->
+  {% include 'global/partials/menu.html' %}
   
   {% include 'global/partials/header.html' %}
   
   {% include 'global/partials/search_box.html' %}
+  
    
   {% for recipe in recipes %}
   
@@ -37,4 +38,10 @@
   {% endfor %}
   
   {% include 'global/partials/pagination.html' %}
+{% endblock %}
+
+{% block 'script' %}
+
+  <script src="{% static 'js/menu.js' %}"></script>
+  
 {% endblock %}
